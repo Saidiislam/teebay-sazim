@@ -1,0 +1,46 @@
+scalar DateTime
+
+type Product {
+  # Product Scheme
+  id: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  price: Int!
+  title: String!
+  description: String!
+}
+
+input CreateProductInput {
+  # Create Product Scheme
+  createdAt: DateTime
+  updatedAt: DateTime
+  price: Int!
+  title: String!
+  description: String!
+}
+
+
+# Going to work on update later
+input UpdateProductInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  price: Int!
+  title: String!
+  description: String!
+}
+
+input OrderByParams {
+  field: String
+  direction: String
+}
+
+type Query {
+  products(orderBy: OrderByParams): [Product]!
+  product(id: Int!): Product
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product
+}

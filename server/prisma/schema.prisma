@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// these things helps with type validation
+
+generator nestgraphql {
+  provider               = "node node_modules/prisma-nestjs-graphql"
+  output                 = "../src/@generated/prisma-nestjs-graphql"
+  fields_Validator_from  = "class-validator"
+  fields_Validator_input = true
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//=========================
+// Schemas start here
+//========================
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  price       Int
+  title       String
+  /// @Validator.MinLength(3)
+  description String
+}
