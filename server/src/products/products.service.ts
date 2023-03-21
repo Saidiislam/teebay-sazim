@@ -26,14 +26,20 @@ export class ProductsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} product`;
+    return this.prisma.product.findUnique({ where: { id } });
   }
 
   update(id: number, updateProductInput: ProductUpdateInput) {
-    return `This action updates a #${id} product`;
+    const { categories, ...rest } = updateProductInput;
+    const where = { id };
+    const updateData: any = rest;
+    if (categories) {
+      updateData.categories = { set: categories };
+    }
+    return this.prisma.product.update({ where, data: updateData });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} product`;
+    return this.prisma.product.delete({ where: { id } });
   }
 }

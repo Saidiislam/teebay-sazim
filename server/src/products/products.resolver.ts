@@ -33,13 +33,13 @@ export class ProductsResolver {
   }
 
   // <=== TO DO ===>
-  // @Mutation('updateProduct')
-  // update(@Args('updateProductInput') updateProductInput: ProductUpdateInput) {
-  //   return this.productsService.update(
-  //     updateProductInput.id,
-  //     updateProductInput,
-  //   );
-  // }
+  @Mutation('updateProduct')
+  update(
+    @Args('id') id: number,
+    @Args('updateProductInput') updateProductInput: ProductUpdateInput,
+  ) {
+    return this.productsService.update(id, updateProductInput);
+  }
 
   @Mutation('removeProduct')
   remove(@Args('id') id: number) {

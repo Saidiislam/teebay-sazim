@@ -52,6 +52,6 @@ type Query {
 
 type Mutation {
   createProduct(createProductInput: CreateProductInput!): Product!
-  updateProduct(id: Int!, input: CreateProductInput!): Product!
+  updateProduct(id: Int!, CreateUpdateInput: CreateProductInput!): Product!
   removeProduct(id: Int!): Product
 }

@@ -59,7 +59,7 @@ export abstract class IQuery {
 export abstract class IMutation {
     abstract createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
 
-    abstract updateProduct(id: number, input: CreateProductInput): Product | Promise<Product>;
+    abstract updateProduct(id: number, CreateUpdateInput: CreateProductInput): Product | Promise<Product>;
 
     abstract removeProduct(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 }
