@@ -1,5 +1,14 @@
 scalar DateTime
 
+enum Category {
+  ELECTRONICS
+  FURNITURE
+  HOME_APPLIANCES
+  SPORTING_GOODS
+  OUTDOOR
+  TOYS
+}
+
 type Product {
   # Product Scheme
   id: Int!
@@ -8,6 +17,7 @@ type Product {
   price: Int!
   title: String!
   description: String!
+  categories: [Category!]!
 }
 
 input CreateProductInput {
@@ -17,8 +27,8 @@ input CreateProductInput {
   price: Int!
   title: String!
   description: String!
+  categories: [Category!]!
 }
-
 
 # Going to work on update later
 input UpdateProductInput {
@@ -27,6 +37,7 @@ input UpdateProductInput {
   price: Int!
   title: String!
   description: String!
+  categories: [Category!]!
 }
 
 input OrderByParams {
@@ -41,6 +52,6 @@ type Query {
 
 type Mutation {
   createProduct(createProductInput: CreateProductInput!): Product!
-  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  updateProduct(id: Int!, input: CreateProductInput!): Product!
   removeProduct(id: Int!): Product
 }

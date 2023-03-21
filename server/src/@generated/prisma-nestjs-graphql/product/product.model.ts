@@ -2,6 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Category } from '../prisma/category.enum';
 
 @ObjectType()
 export class Product {
@@ -23,4 +24,7 @@ export class Product {
 
     @Field(() => String, {nullable:false})
     description!: string;
+
+    @Field(() => [Category], {nullable:true})
+    categories!: Array<keyof typeof Category>;
 }

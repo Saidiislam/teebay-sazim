@@ -23,5 +23,8 @@ export class ProductCountAggregateInput {
     description?: true;
 
     @Field(() => Boolean, {nullable:true})
+    categories?: true;
+
+    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

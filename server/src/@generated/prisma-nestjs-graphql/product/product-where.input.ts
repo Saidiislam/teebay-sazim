@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { IntFilter } from '../prisma/int-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
+import { EnumCategoryNullableListFilter } from '../prisma/enum-category-nullable-list-filter.input';
 
 @InputType()
 export class ProductWhereInput {
@@ -33,4 +34,7 @@ export class ProductWhereInput {
 
     @Field(() => StringFilter, {nullable:true})
     description?: StringFilter;
+
+    @Field(() => EnumCategoryNullableListFilter, {nullable:true})
+    categories?: EnumCategoryNullableListFilter;
 }

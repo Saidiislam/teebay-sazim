@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
+import { ProductUpdatecategoriesInput } from './product-updatecategories.input';
 
 @InputType()
 export class ProductUpdateInput {
@@ -21,4 +22,7 @@ export class ProductUpdateInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     description?: StringFieldUpdateOperationsInput;
+
+    @Field(() => ProductUpdatecategoriesInput, {nullable:true})
+    categories?: ProductUpdatecategoriesInput;
 }

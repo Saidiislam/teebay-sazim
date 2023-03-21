@@ -23,12 +23,23 @@ datasource db {
 // Schemas start here
 //========================
 
+
+
 model Product {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
   price       Int
   title       String
   /// @Validator.MinLength(3)
   description String
+  categories  Category[]
+}
+enum Category {
+  ELECTRONICS
+  FURNITURE
+  HOME_APPLIANCES
+  SPORTING_GOODS
+  OUTDOOR
+  TOYS
 }

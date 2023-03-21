@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
 import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
+import { EnumCategoryNullableListFilter } from '../prisma/enum-category-nullable-list-filter.input';
 
 @InputType()
 export class ProductScalarWhereWithAggregatesInput {
@@ -33,4 +34,7 @@ export class ProductScalarWhereWithAggregatesInput {
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     description?: StringWithAggregatesFilter;
+
+    @Field(() => EnumCategoryNullableListFilter, {nullable:true})
+    categories?: EnumCategoryNullableListFilter;
 }

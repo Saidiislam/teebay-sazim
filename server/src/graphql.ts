@@ -8,21 +8,31 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export enum Category {
+    ELECTRONICS = "ELECTRONICS",
+    FURNITURE = "FURNITURE",
+    HOME_APPLIANCES = "HOME_APPLIANCES",
+    SPORTING_GOODS = "SPORTING_GOODS",
+    OUTDOOR = "OUTDOOR",
+    TOYS = "TOYS"
+}
+
 export class CreateProductInput {
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
     price: number;
     title: string;
     description: string;
+    categories: Category[];
 }
 
 export class UpdateProductInput {
-    id?: Nullable<Product>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
     price: number;
     title: string;
     description: string;
+    categories: Category[];
 }
 
 export class OrderByParams {
@@ -37,6 +47,7 @@ export class Product {
     price: number;
     title: string;
     description: string;
+    categories: Category[];
 }
 
 export abstract class IQuery {
@@ -48,7 +59,7 @@ export abstract class IQuery {
 export abstract class IMutation {
     abstract createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
 
-    abstract updateProduct(updateProductInput: UpdateProductInput): Product | Promise<Product>;
+    abstract updateProduct(id: number, input: CreateProductInput): Product | Promise<Product>;
 
     abstract removeProduct(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 }

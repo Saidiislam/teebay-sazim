@@ -22,4 +22,7 @@ export class ProductCountOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     description?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    categories?: keyof typeof SortOrder;
 }
