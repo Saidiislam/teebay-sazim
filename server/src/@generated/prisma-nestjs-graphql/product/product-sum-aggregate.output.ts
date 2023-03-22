@@ -10,4 +10,7 @@ export class ProductSumAggregate {
 
     @Field(() => Int, {nullable:true})
     price?: number;
+
+    @Field(() => Int, {nullable:true})
+    sellerId?: number;
 }

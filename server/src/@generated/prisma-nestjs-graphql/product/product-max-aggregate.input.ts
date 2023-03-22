@@ -21,4 +21,7 @@ export class ProductMaxAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     description?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    sellerId?: true;
 }

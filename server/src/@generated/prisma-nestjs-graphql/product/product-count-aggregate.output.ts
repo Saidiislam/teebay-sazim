@@ -27,5 +27,8 @@ export class ProductCountAggregate {
     categories!: number;
 
     @Field(() => Int, {nullable:false})
+    sellerId!: number;
+
+    @Field(() => Int, {nullable:false})
     _all!: number;
 }

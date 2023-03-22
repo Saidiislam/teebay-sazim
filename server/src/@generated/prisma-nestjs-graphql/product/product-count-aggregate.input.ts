@@ -26,5 +26,8 @@ export class ProductCountAggregateInput {
     categories?: true;
 
     @Field(() => Boolean, {nullable:true})
+    sellerId?: true;
+
+    @Field(() => Boolean, {nullable:true})
     _all?: true;
 }

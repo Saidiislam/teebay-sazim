@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import * as Validator from 'class-validator';
 import { ProductCreatecategoriesInput } from './product-createcategories.input';
+import { UserCreateNestedOneWithoutProductsInput } from '../user/user-create-nested-one-without-products.input';
 
 @InputType()
 export class ProductCreateInput {
@@ -25,4 +26,7 @@ export class ProductCreateInput {
 
     @Field(() => ProductCreatecategoriesInput, {nullable:true})
     categories?: ProductCreatecategoriesInput;
+
+    @Field(() => UserCreateNestedOneWithoutProductsInput, {nullable:true})
+    seller?: UserCreateNestedOneWithoutProductsInput;
 }

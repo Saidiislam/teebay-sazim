@@ -21,4 +21,7 @@ export class ProductMinAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
     description?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    sellerId?: true;
 }

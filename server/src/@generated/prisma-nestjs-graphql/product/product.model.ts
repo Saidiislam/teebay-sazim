@@ -3,6 +3,7 @@ import { ObjectType } from '@nestjs/graphql';
 import { ID } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { Category } from '../prisma/category.enum';
+import { User } from '../user/user.model';
 
 @ObjectType()
 export class Product {
@@ -27,4 +28,10 @@ export class Product {
 
     @Field(() => [Category], {nullable:true})
     categories!: Array<keyof typeof Category>;
+
+    @Field(() => Int, {nullable:true})
+    sellerId!: number | null;
+
+    @Field(() => User, {nullable:true})
+    seller?: User | null;
 }

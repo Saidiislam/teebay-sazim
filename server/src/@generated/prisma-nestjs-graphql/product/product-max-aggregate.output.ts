@@ -22,4 +22,7 @@ export class ProductMaxAggregate {
 
     @Field(() => String, {nullable:true})
     description?: string;
+
+    @Field(() => Int, {nullable:true})
+    sellerId?: number;
 }

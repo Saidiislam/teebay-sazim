@@ -22,4 +22,7 @@ export class ProductMaxOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
     description?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    sellerId?: keyof typeof SortOrder;
 }
