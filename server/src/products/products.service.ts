@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-
-import { UpdateProductInput } from './dto/update-product.input';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProductCreateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-create.input';
 import { ProductUpdateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-update.input';
@@ -29,14 +27,16 @@ export class ProductsService {
     return this.prisma.product.findUnique({ where: { id } });
   }
 
-  update(id: number, updateProductInput: ProductUpdateInput) {
+  async update(id: number, updateProductInput: ProductUpdateInput) {
     const { categories, ...rest } = updateProductInput;
-    const where = { id };
     const updateData: any = rest;
     if (categories) {
       updateData.categories = { set: categories };
     }
-    return this.prisma.product.update({ where, data: updateData });
+    return await this.prisma.product.update({
+      where: { id },
+      data: updateData,
+    });
   }
 
   remove(id: number) {

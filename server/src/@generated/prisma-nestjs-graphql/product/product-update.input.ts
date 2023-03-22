@@ -7,22 +7,21 @@ import { ProductUpdatecategoriesInput } from './product-updatecategories.input';
 
 @InputType()
 export class ProductUpdateInput {
+  @Field(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+  createdAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    createdAt?: DateTimeFieldUpdateOperationsInput;
+  @Field(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+  updatedAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    updatedAt?: DateTimeFieldUpdateOperationsInput;
+  @Field(() => IntFieldUpdateOperationsInput, { nullable: true })
+  price?: IntFieldUpdateOperationsInput;
 
-    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
-    price?: IntFieldUpdateOperationsInput;
+  @Field(() => StringFieldUpdateOperationsInput, { nullable: true })
+  title?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    title?: StringFieldUpdateOperationsInput;
+  @Field(() => StringFieldUpdateOperationsInput, { nullable: true })
+  description?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    description?: StringFieldUpdateOperationsInput;
-
-    @Field(() => ProductUpdatecategoriesInput, {nullable:true})
-    categories?: ProductUpdatecategoriesInput;
+  @Field(() => ProductUpdatecategoriesInput, { nullable: true })
+  categories?: ProductUpdatecategoriesInput;
 }

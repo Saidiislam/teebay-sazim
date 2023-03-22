@@ -29,10 +29,10 @@ export class CreateProductInput {
 export class UpdateProductInput {
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
-    price: number;
-    title: string;
-    description: string;
-    categories: Category[];
+    price?: Nullable<number>;
+    title?: Nullable<string>;
+    description?: Nullable<string>;
+    categories?: Nullable<Category[]>;
 }
 
 export class OrderByParams {
@@ -59,7 +59,7 @@ export abstract class IQuery {
 export abstract class IMutation {
     abstract createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
 
-    abstract updateProduct(id: number, CreateUpdateInput: CreateProductInput): Product | Promise<Product>;
+    abstract updateProduct(id: number, createUpdateInput: UpdateProductInput): Nullable<Product> | Promise<Nullable<Product>>;
 
     abstract removeProduct(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 }

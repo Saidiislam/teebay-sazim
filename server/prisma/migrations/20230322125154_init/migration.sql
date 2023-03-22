@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "Category" AS ENUM ('ELECTRONICS', 'FURNITURE', 'HOME_APPLIANCES', 'SPORTING_GOODS', 'OUTDOOR', 'TOYS');
+
 -- CreateTable
 CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
@@ -6,6 +9,7 @@ CREATE TABLE "Product" (
     "price" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "categories" "Category"[],
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

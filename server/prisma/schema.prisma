@@ -35,6 +35,7 @@ model Product {
   description String
   categories  Category[]
 }
+
 enum Category {
   ELECTRONICS
   FURNITURE

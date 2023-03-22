@@ -34,10 +34,10 @@ input CreateProductInput {
 input UpdateProductInput {
   createdAt: DateTime
   updatedAt: DateTime
-  price: Int!
-  title: String!
-  description: String!
-  categories: [Category!]!
+  price: Int
+  title: String
+  description: String
+  categories: [Category!]
 }
 
 input OrderByParams {
@@ -52,6 +52,6 @@ type Query {
 
 type Mutation {
   createProduct(createProductInput: CreateProductInput!): Product!
-  updateProduct(id: Int!, CreateUpdateInput: CreateProductInput!): Product!
+  updateProduct(id: Int!, createUpdateInput: UpdateProductInput!): Product
   removeProduct(id: Int!): Product
 }
