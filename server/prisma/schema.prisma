@@ -30,6 +30,7 @@ model User {
   username  String
   /// @Validator.IsEmail()
   email     String
+  role      Role[]
   products  Product[]
 }
 

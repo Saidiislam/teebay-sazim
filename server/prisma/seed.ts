@@ -5,15 +5,37 @@ async function main() {
   // await prisma.product.deleteMany();
 
   // Checking if prisma is interacting with my DB [DEBUG]
-  const create = await prisma.product.create({
+  const create = await prisma.user.create({
     data: {
-      title: 'Example Product',
-      description: 'This is an example product',
-      price: 2134,
-      categories: ['ELECTRONICS', 'FURNITURE'],
+      username: 'Test',
+      email: 'test@gmail.com',
+      products: {
+        create: [
+          {
+            title: 'HELLO I AM TEST',
+            description: 'TEST TEST',
+            price: 8765,
+            categories: ['ELECTRONICS', 'FURNITURE'],
+          },
+          {
+            title: 'HELLO I AM TEST 2',
+            description: 'TEST TEST 2',
+            price: 8765,
+            categories: ['ELECTRONICS', 'FURNITURE'],
+          },
+        ],
+      },
     },
   });
   console.log({ create });
+
+  const userWithProducts = await prisma.user.findUnique({
+    where: { id: 1 },
+    include: {
+      products: true,
+    },
+  });
+  console.log({ userWithProducts });
 
   // const find = await prisma.product.findUnique({
   //   where: {

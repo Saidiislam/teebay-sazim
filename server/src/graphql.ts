@@ -17,6 +17,11 @@ export enum Category {
     TOYS = "TOYS"
 }
 
+export enum Role {
+    ADMIN = "ADMIN",
+    USER = "USER"
+}
+
 export class CreateProductInput {
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
@@ -24,6 +29,7 @@ export class CreateProductInput {
     title: string;
     description: string;
     categories: Category[];
+    sellerId: number;
 }
 
 export class UpdateProductInput {
@@ -33,11 +39,28 @@ export class UpdateProductInput {
     title?: Nullable<string>;
     description?: Nullable<string>;
     categories?: Nullable<Category[]>;
+    sellerId?: Nullable<number>;
 }
 
 export class OrderByParams {
     field?: Nullable<string>;
     direction?: Nullable<string>;
+}
+
+export class CreateUserInput {
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+    username: string;
+    email: string;
+    role: Role[];
+}
+
+export class UpdateUserInput {
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+    username?: Nullable<string>;
+    email?: Nullable<string>;
+    role?: Nullable<Role[]>;
 }
 
 export class Product {
@@ -48,12 +71,18 @@ export class Product {
     title: string;
     description: string;
     categories: Category[];
+    sellerId: number;
+    seller?: Nullable<Nullable<User>[]>;
 }
 
 export abstract class IQuery {
     abstract products(orderBy?: Nullable<OrderByParams>): Nullable<Product>[] | Promise<Nullable<Product>[]>;
 
     abstract product(id: number): Nullable<Product> | Promise<Nullable<Product>>;
+
+    abstract users(orderBy?: Nullable<OrderByParams>): Nullable<User>[] | Promise<Nullable<User>[]>;
+
+    abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export abstract class IMutation {
@@ -62,6 +91,22 @@ export abstract class IMutation {
     abstract updateProduct(id: number, createUpdateInput: UpdateProductInput): Nullable<Product> | Promise<Nullable<Product>>;
 
     abstract removeProduct(id: number): Nullable<Product> | Promise<Nullable<Product>>;
+
+    abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
+
+    abstract updateUser(id: number, updateUserInput: UpdateUserInput): User | Promise<User>;
+
+    abstract removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
+}
+
+export class User {
+    id: number;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+    username: string;
+    email: string;
+    role: Role[];
+    products?: Nullable<Product[]>;
 }
 
 export type DateTime = any;

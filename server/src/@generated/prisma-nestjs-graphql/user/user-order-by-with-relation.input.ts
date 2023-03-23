@@ -21,6 +21,9 @@ export class UserOrderByWithRelationInput {
     @Field(() => SortOrder, {nullable:true})
     email?: keyof typeof SortOrder;
 
+    @Field(() => SortOrder, {nullable:true})
+    role?: keyof typeof SortOrder;
+
     @Field(() => ProductOrderByRelationAggregateInput, {nullable:true})
     products?: ProductOrderByRelationAggregateInput;
 }

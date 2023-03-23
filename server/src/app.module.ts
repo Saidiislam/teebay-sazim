@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   // Setting Basic Preferences and Paths to get GQL
@@ -23,6 +24,7 @@ import { ProductsModule } from './products/products.module';
       },
     }),
     ProductsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

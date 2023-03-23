@@ -3,6 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { IntFilter } from '../prisma/int-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
+import { EnumRoleNullableListFilter } from '../prisma/enum-role-nullable-list-filter.input';
 import { ProductListRelationFilter } from '../product/product-list-relation-filter.input';
 
 @InputType()
@@ -31,6 +32,9 @@ export class UserWhereInput {
 
     @Field(() => StringFilter, {nullable:true})
     email?: StringFilter;
+
+    @Field(() => EnumRoleNullableListFilter, {nullable:true})
+    role?: EnumRoleNullableListFilter;
 
     @Field(() => ProductListRelationFilter, {nullable:true})
     products?: ProductListRelationFilter;

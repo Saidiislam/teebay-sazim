@@ -1,0 +1,44 @@
+scalar DateTime
+
+enum Role {
+  ADMIN
+  USER
+}
+
+type User {
+  # User Scheme
+  id: Int!
+  createdAt: DateTime
+  updatedAt: DateTime
+  username: String!
+  email: String!
+  role: [Role!]!
+  products: [Product!]
+}
+
+input CreateUserInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  username: String!
+  email: String!
+  role: [Role!]!
+}
+
+input UpdateUserInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  username: String
+  email: String
+  role: [Role!]
+}
+
+type Query {
+  users(orderBy: OrderByParams): [User]!
+  user(id: Int!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
+}

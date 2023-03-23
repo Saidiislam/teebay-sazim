@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import * as Validator from 'class-validator';
+import { UserCreateroleInput } from './user-createrole.input';
 
 @InputType()
 export class UserCreateWithoutProductsInput {
@@ -17,4 +18,7 @@ export class UserCreateWithoutProductsInput {
     @Field(() => String, {nullable:false})
     @Validator.IsEmail()
     email!: string;
+
+    @Field(() => UserCreateroleInput, {nullable:true})
+    role?: UserCreateroleInput;
 }
