@@ -1,9 +1,11 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.input';
-import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
-import { EnumRoleNullableListFilter } from '../prisma/enum-role-nullable-list-filter.input';
+import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
+import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
+import { EnumRoleWithAggregatesFilter } from '../prisma/enum-role-with-aggregates-filter.input';
+import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 
 @InputType()
 export class UserScalarWhereWithAggregatesInput {
@@ -20,18 +22,27 @@ export class UserScalarWhereWithAggregatesInput {
     @Field(() => IntWithAggregatesFilter, {nullable:true})
     id?: IntWithAggregatesFilter;
 
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    firstName?: StringWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    lastName?: StringWithAggregatesFilter;
+
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    address?: StringNullableWithAggregatesFilter;
+
+    @Field(() => IntNullableWithAggregatesFilter, {nullable:true})
+    phone?: IntNullableWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    email?: StringWithAggregatesFilter;
+
+    @Field(() => EnumRoleWithAggregatesFilter, {nullable:true})
+    role?: EnumRoleWithAggregatesFilter;
+
     @Field(() => DateTimeWithAggregatesFilter, {nullable:true})
     createdAt?: DateTimeWithAggregatesFilter;
 
     @Field(() => DateTimeWithAggregatesFilter, {nullable:true})
     updatedAt?: DateTimeWithAggregatesFilter;
-
-    @Field(() => StringWithAggregatesFilter, {nullable:true})
-    username?: StringWithAggregatesFilter;
-
-    @Field(() => StringWithAggregatesFilter, {nullable:true})
-    email?: StringWithAggregatesFilter;
-
-    @Field(() => EnumRoleNullableListFilter, {nullable:true})
-    role?: EnumRoleNullableListFilter;
 }

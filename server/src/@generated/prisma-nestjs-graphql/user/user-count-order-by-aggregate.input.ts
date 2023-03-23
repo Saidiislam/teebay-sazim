@@ -9,17 +9,26 @@ export class UserCountOrderByAggregateInput {
     id?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    createdAt?: keyof typeof SortOrder;
+    firstName?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    updatedAt?: keyof typeof SortOrder;
+    lastName?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    username?: keyof typeof SortOrder;
+    address?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    phone?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     email?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     role?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    createdAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    updatedAt?: keyof typeof SortOrder;
 }

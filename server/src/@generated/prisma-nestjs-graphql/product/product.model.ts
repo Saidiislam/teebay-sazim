@@ -11,14 +11,14 @@ export class Product {
     @Field(() => ID, {nullable:false})
     id!: number;
 
-    @Field(() => Date, {nullable:false})
-    createdAt!: Date;
-
-    @Field(() => Date, {nullable:false})
-    updatedAt!: Date;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 
     @Field(() => Int, {nullable:false})
     price!: number;
+
+    @Field(() => Boolean, {nullable:false,defaultValue:false})
+    isSold!: boolean;
 
     @Field(() => String, {nullable:false})
     title!: string;
@@ -26,11 +26,14 @@ export class Product {
     @Field(() => String, {nullable:false})
     description!: string;
 
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date;
+
     @Field(() => [Category], {nullable:true})
     categories!: Array<keyof typeof Category>;
-
-    @Field(() => Int, {nullable:false})
-    userId!: number;
 
     @Field(() => User, {nullable:true})
     User?: User | null;

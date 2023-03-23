@@ -12,36 +12,41 @@ enum Category {
 type Product {
   # Product Scheme
   id: Int!
-  createdAt: DateTime
-  updatedAt: DateTime
+  userId: Int!
   price: Int!
+  isSold: Boolean!
   title: String!
   description: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+
   categories: [Category!]!
-  userId: Int!
-  User: [User!]
+  User: User
 }
 
 input CreateProductInput {
   # Create Product Scheme
-  createdAt: DateTime
-  updatedAt: DateTime
+  userId: Int!
   price: Int!
+  isSold: Boolean!
   title: String!
   description: String!
-  categories: [Category!]!
-  userId: Int!
-}
-
-# Going to work on update later
-input UpdateProductInput {
   createdAt: DateTime
   updatedAt: DateTime
+
+  categories: [Category!]!
+}
+
+input UpdateProductInput {
+  userId: Int
   price: Int
+  isSold: Boolean
   title: String
   description: String
+  createdAt: DateTime
+  updatedAt: DateTime
+
   categories: [Category!]
-  userId: Int
 }
 
 input OrderByParams {

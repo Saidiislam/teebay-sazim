@@ -14,20 +14,29 @@ export class UserGroupBy {
     @Field(() => Int, {nullable:false})
     id!: number;
 
+    @Field(() => String, {nullable:false})
+    firstName!: string;
+
+    @Field(() => String, {nullable:false})
+    lastName!: string;
+
+    @Field(() => String, {nullable:true})
+    address?: string;
+
+    @Field(() => Int, {nullable:true})
+    phone?: number;
+
+    @Field(() => String, {nullable:false})
+    email!: string;
+
+    @Field(() => Role, {nullable:false})
+    role!: keyof typeof Role;
+
     @Field(() => Date, {nullable:false})
     createdAt!: Date | string;
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date | string;
-
-    @Field(() => String, {nullable:false})
-    username!: string;
-
-    @Field(() => String, {nullable:false})
-    email!: string;
-
-    @Field(() => [Role], {nullable:true})
-    role?: Array<keyof typeof Role>;
 
     @Field(() => UserCountAggregate, {nullable:true})
     _count?: UserCountAggregate;

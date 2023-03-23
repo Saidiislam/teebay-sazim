@@ -8,8 +8,8 @@ export class ProductAvgAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
-    price?: true;
+    userId?: true;
 
     @Field(() => Boolean, {nullable:true})
-    userId?: true;
+    price?: true;
 }

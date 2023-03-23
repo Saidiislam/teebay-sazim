@@ -8,13 +8,13 @@ export class ProductMinAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
-    createdAt?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    updatedAt?: true;
+    userId?: true;
 
     @Field(() => Boolean, {nullable:true})
     price?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    isSold?: true;
 
     @Field(() => Boolean, {nullable:true})
     title?: true;
@@ -23,5 +23,8 @@ export class ProductMinAggregateInput {
     description?: true;
 
     @Field(() => Boolean, {nullable:true})
-    userId?: true;
+    createdAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    updatedAt?: true;
 }

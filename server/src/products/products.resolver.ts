@@ -24,7 +24,6 @@ export class ProductsResolver {
     return created;
   }
 
-  // <=== TO DO ===>
   @Mutation('updateProduct')
   async update(
     @Args('id') id: number,
@@ -32,6 +31,11 @@ export class ProductsResolver {
   ) {
     const updated = await this.productsService.update(id, updateProductInput);
     return updated;
+  }
+
+  @Mutation('removeProduct')
+  remove(@Args('id') id: number) {
+    return this.productsService.remove(id);
   }
 
   @Query('products')
@@ -45,10 +49,5 @@ export class ProductsResolver {
   @Query('product')
   findOne(@Args('id') id: number) {
     return this.productsService.findOne(id);
-  }
-
-  @Mutation('removeProduct')
-  remove(@Args('id') id: number) {
-    return this.productsService.remove(id);
   }
 }

@@ -23,23 +23,25 @@ export enum Role {
 }
 
 export class CreateProductInput {
-    createdAt?: Nullable<DateTime>;
-    updatedAt?: Nullable<DateTime>;
+    userId: number;
     price: number;
+    isSold: boolean;
     title: string;
     description: string;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
     categories: Category[];
-    userId: number;
 }
 
 export class UpdateProductInput {
-    createdAt?: Nullable<DateTime>;
-    updatedAt?: Nullable<DateTime>;
+    userId?: Nullable<number>;
     price?: Nullable<number>;
+    isSold?: Nullable<boolean>;
     title?: Nullable<string>;
     description?: Nullable<string>;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
     categories?: Nullable<Category[]>;
-    userId?: Nullable<number>;
 }
 
 export class OrderByParams {
@@ -48,31 +50,38 @@ export class OrderByParams {
 }
 
 export class CreateUserInput {
+    firstName: string;
+    lastName: string;
+    address?: Nullable<string>;
+    phone?: Nullable<number>;
+    email: string;
+    role: Role;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
-    username: string;
-    email: string;
-    role: Role[];
 }
 
 export class UpdateUserInput {
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    address?: Nullable<string>;
+    phone?: Nullable<number>;
+    email?: Nullable<string>;
+    role?: Nullable<Role>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
-    username?: Nullable<string>;
-    email?: Nullable<string>;
-    role?: Nullable<Role[]>;
 }
 
 export class Product {
     id: number;
-    createdAt?: Nullable<DateTime>;
-    updatedAt?: Nullable<DateTime>;
+    userId: number;
     price: number;
+    isSold: boolean;
     title: string;
     description: string;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
     categories: Category[];
-    userId: number;
-    User?: Nullable<User[]>;
+    User?: Nullable<User>;
 }
 
 export abstract class IQuery {
@@ -101,11 +110,14 @@ export abstract class IMutation {
 
 export class User {
     id: number;
+    firstName: string;
+    lastName: string;
+    address?: Nullable<string>;
+    phone?: Nullable<number>;
+    email: string;
+    role: Role;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
-    username: string;
-    email: string;
-    role: Role[];
     products?: Nullable<Product[]>;
 }
 

@@ -14,14 +14,14 @@ export class ProductGroupBy {
     @Field(() => Int, {nullable:false})
     id!: number;
 
-    @Field(() => Date, {nullable:false})
-    createdAt!: Date | string;
-
-    @Field(() => Date, {nullable:false})
-    updatedAt!: Date | string;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 
     @Field(() => Int, {nullable:false})
     price!: number;
+
+    @Field(() => Boolean, {nullable:false})
+    isSold!: boolean;
 
     @Field(() => String, {nullable:false})
     title!: string;
@@ -29,11 +29,14 @@ export class ProductGroupBy {
     @Field(() => String, {nullable:false})
     description!: string;
 
+    @Field(() => Date, {nullable:false})
+    createdAt!: Date | string;
+
+    @Field(() => Date, {nullable:false})
+    updatedAt!: Date | string;
+
     @Field(() => [Category], {nullable:true})
     categories?: Array<keyof typeof Category>;
-
-    @Field(() => Int, {nullable:false})
-    userId!: number;
 
     @Field(() => ProductCountAggregate, {nullable:true})
     _count?: ProductCountAggregate;

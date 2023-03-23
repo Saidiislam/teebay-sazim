@@ -8,14 +8,11 @@ import { UserCreateNestedOneWithoutProductsInput } from '../user/user-create-nes
 @InputType()
 export class ProductCreateInput {
 
-    @Field(() => Date, {nullable:true})
-    createdAt?: Date | string;
-
-    @Field(() => Date, {nullable:true})
-    updatedAt?: Date | string;
-
     @Field(() => Int, {nullable:false})
     price!: number;
+
+    @Field(() => Boolean, {nullable:true})
+    isSold?: boolean;
 
     @Field(() => String, {nullable:false})
     title!: string;
@@ -23,6 +20,12 @@ export class ProductCreateInput {
     @Field(() => String, {nullable:false})
     @Validator.MinLength(3)
     description!: string;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 
     @Field(() => ProductCreatecategoriesInput, {nullable:true})
     categories?: ProductCreatecategoriesInput;

@@ -24,27 +24,48 @@ datasource db {
 //========================
 
 model User {
-  id        Int       @id @default(autoincrement())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  username  String
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  address   String?
+  phone     Int?
   /// @Validator.IsEmail()
-  email     String
-  role      Role[]
-  products  Product[]
+  email     String   @unique
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+  // Rent     Rent[]
 }
 
 model Product {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id          Int      @id @default(autoincrement())
+  userId      Int
   price       Int
+  isSold      Boolean  @default(false)
   title       String
   /// @Validator.MinLength(3)
   description String
-  categories  Category[]
-  userId      Int
-  User        User?      @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  categories Category[]
+  User       User?      @relation(fields: [userId], references: [id])
+  // Rent       Rent[]
+}
+
+model Rent {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  productId Int?
+  startData DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // User    User?    @relation(fields: [userId], references: [id])
+  // Product Product? @relation(fields: [productId], references: [id])
 }
 
 enum Role {

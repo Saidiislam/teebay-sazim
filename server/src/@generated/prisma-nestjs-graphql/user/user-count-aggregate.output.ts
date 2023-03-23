@@ -9,19 +9,28 @@ export class UserCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
-    createdAt!: number;
+    firstName!: number;
 
     @Field(() => Int, {nullable:false})
-    updatedAt!: number;
+    lastName!: number;
 
     @Field(() => Int, {nullable:false})
-    username!: number;
+    address!: number;
+
+    @Field(() => Int, {nullable:false})
+    phone!: number;
 
     @Field(() => Int, {nullable:false})
     email!: number;
 
     @Field(() => Int, {nullable:false})
     role!: number;
+
+    @Field(() => Int, {nullable:false})
+    createdAt!: number;
+
+    @Field(() => Int, {nullable:false})
+    updatedAt!: number;
 
     @Field(() => Int, {nullable:false})
     _all!: number;

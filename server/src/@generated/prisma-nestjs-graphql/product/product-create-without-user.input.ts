@@ -7,14 +7,11 @@ import { ProductCreatecategoriesInput } from './product-createcategories.input';
 @InputType()
 export class ProductCreateWithoutUserInput {
 
-    @Field(() => Date, {nullable:true})
-    createdAt?: Date | string;
-
-    @Field(() => Date, {nullable:true})
-    updatedAt?: Date | string;
-
     @Field(() => Int, {nullable:false})
     price!: number;
+
+    @Field(() => Boolean, {nullable:true})
+    isSold?: boolean;
 
     @Field(() => String, {nullable:false})
     title!: string;
@@ -22,6 +19,12 @@ export class ProductCreateWithoutUserInput {
     @Field(() => String, {nullable:false})
     @Validator.MinLength(3)
     description!: string;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 
     @Field(() => ProductCreatecategoriesInput, {nullable:true})
     categories?: ProductCreatecategoriesInput;

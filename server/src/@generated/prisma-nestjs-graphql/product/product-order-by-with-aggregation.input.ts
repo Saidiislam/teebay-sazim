@@ -14,13 +14,13 @@ export class ProductOrderByWithAggregationInput {
     id?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    createdAt?: keyof typeof SortOrder;
-
-    @Field(() => SortOrder, {nullable:true})
-    updatedAt?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     price?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    isSold?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
     title?: keyof typeof SortOrder;
@@ -29,10 +29,13 @@ export class ProductOrderByWithAggregationInput {
     description?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    categories?: keyof typeof SortOrder;
+    createdAt?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    userId?: keyof typeof SortOrder;
+    updatedAt?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    categories?: keyof typeof SortOrder;
 
     @Field(() => ProductCountOrderByAggregateInput, {nullable:true})
     _count?: ProductCountOrderByAggregateInput;

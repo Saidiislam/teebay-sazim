@@ -8,13 +8,13 @@ export class ProductCountAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
-    createdAt?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    updatedAt?: true;
+    userId?: true;
 
     @Field(() => Boolean, {nullable:true})
     price?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    isSold?: true;
 
     @Field(() => Boolean, {nullable:true})
     title?: true;
@@ -23,10 +23,13 @@ export class ProductCountAggregateInput {
     description?: true;
 
     @Field(() => Boolean, {nullable:true})
-    categories?: true;
+    createdAt?: true;
 
     @Field(() => Boolean, {nullable:true})
-    userId?: true;
+    updatedAt?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    categories?: true;
 
     @Field(() => Boolean, {nullable:true})
     _all?: true;

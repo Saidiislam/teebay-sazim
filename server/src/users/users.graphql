@@ -1,5 +1,6 @@
 scalar DateTime
 
+
 enum Role {
   ADMIN
   USER
@@ -8,28 +9,37 @@ enum Role {
 type User {
   # User Scheme
   id: Int!
+  firstName: String!
+  lastName: String!
+  address: String
+  phone: Int
+  email: String!
+  role: Role!
   createdAt: DateTime
   updatedAt: DateTime
-  username: String!
-  email: String!
-  role: [Role!]!
   products: [Product!]
 }
 
 input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  address: String
+  phone: Int
+  email: String!
+  role: Role!
   createdAt: DateTime
   updatedAt: DateTime
-  username: String!
-  email: String!
-  role: [Role!]!
 }
 
 input UpdateUserInput {
+  firstName: String
+  lastName: String
+  address: String
+  phone: Int
+  email: String
+  role: Role
   createdAt: DateTime
   updatedAt: DateTime
-  username: String
-  email: String
-  role: [Role!]
 }
 
 type Query {

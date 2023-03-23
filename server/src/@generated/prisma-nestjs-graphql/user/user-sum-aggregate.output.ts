@@ -7,4 +7,7 @@ export class UserSumAggregate {
 
     @Field(() => Int, {nullable:true})
     id?: number;
+
+    @Field(() => Int, {nullable:true})
+    phone?: number;
 }

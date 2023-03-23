@@ -2,13 +2,14 @@ import { registerEnumType } from '@nestjs/graphql';
 
 export enum ProductScalarFieldEnum {
     id = "id",
-    createdAt = "createdAt",
-    updatedAt = "updatedAt",
+    userId = "userId",
     price = "price",
+    isSold = "isSold",
     title = "title",
     description = "description",
-    categories = "categories",
-    userId = "userId"
+    createdAt = "createdAt",
+    updatedAt = "updatedAt",
+    categories = "categories"
 }
 
 

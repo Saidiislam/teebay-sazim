@@ -16,11 +16,14 @@ export class UsersService {
   }
 
   findAll() {
-    return this.prisma.user.findMany({});
+    return this.prisma.user.findMany({ include: { products: true } });
   }
 
   findOne(id: number) {
-    return this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user.findUnique({
+      where: { id },
+      include: { products: true },
+    });
   }
 
   async update(id: number, updateUserInput: UserUpdateInput) {

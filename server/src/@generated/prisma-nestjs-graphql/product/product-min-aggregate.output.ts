@@ -8,14 +8,14 @@ export class ProductMinAggregate {
     @Field(() => Int, {nullable:true})
     id?: number;
 
-    @Field(() => Date, {nullable:true})
-    createdAt?: Date | string;
-
-    @Field(() => Date, {nullable:true})
-    updatedAt?: Date | string;
+    @Field(() => Int, {nullable:true})
+    userId?: number;
 
     @Field(() => Int, {nullable:true})
     price?: number;
+
+    @Field(() => Boolean, {nullable:true})
+    isSold?: boolean;
 
     @Field(() => String, {nullable:true})
     title?: string;
@@ -23,6 +23,9 @@ export class ProductMinAggregate {
     @Field(() => String, {nullable:true})
     description?: string;
 
-    @Field(() => Int, {nullable:true})
-    userId?: number;
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
 }

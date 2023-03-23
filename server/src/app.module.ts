@@ -16,7 +16,9 @@ import { UsersModule } from './users/users.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
       typePaths: ['./**/*.graphql'],
-      resolvers: { DateTime: GraphQLISODateTime },
+      resolvers: {
+        DateTime: GraphQLISODateTime,
+      },
       // <=== To Do ===>
       subscriptions: {
         'graphql-ws': true,
