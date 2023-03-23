@@ -20,9 +20,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return this.prisma.user
-      .findUnique({ where: { id }, include: { products: true } })
-      .products();
+    return this.prisma.user.findUnique({ where: { id } });
   }
 
   async update(id: number, updateUserInput: UserUpdateInput) {
