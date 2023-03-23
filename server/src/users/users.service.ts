@@ -9,12 +9,6 @@ export class UsersService {
   // Using PrismaService to fetch user
   constructor(private prisma: PrismaService) {}
 
-  create(createUserInput: UserCreateInput) {
-    return this.prisma.user.create({
-      data: createUserInput,
-    });
-  }
-
   findAll() {
     return this.prisma.user.findMany({ include: { products: true } });
   }
@@ -23,6 +17,18 @@ export class UsersService {
     return this.prisma.user.findUnique({
       where: { id },
       include: { products: true },
+    });
+  }
+
+  async findEmail(email: string) {
+    return await this.prisma.user.findUnique({
+      where: { email },
+    });
+  }
+
+  create(createUserInput: UserCreateInput) {
+    return this.prisma.user.create({
+      data: createUserInput,
     });
   }
 
