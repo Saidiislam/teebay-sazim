@@ -23,5 +23,5 @@ export class ProductMinAggregateInput {
     description?: true;
 
     @Field(() => Boolean, {nullable:true})
-    sellerId?: true;
+    userId?: true;
 }

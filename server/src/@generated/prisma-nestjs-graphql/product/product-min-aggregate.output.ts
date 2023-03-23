@@ -24,5 +24,5 @@ export class ProductMinAggregate {
     description?: string;
 
     @Field(() => Int, {nullable:true})
-    sellerId?: number;
+    userId?: number;
 }

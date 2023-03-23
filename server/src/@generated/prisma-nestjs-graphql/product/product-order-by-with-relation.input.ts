@@ -28,8 +28,8 @@ export class ProductOrderByWithRelationInput {
     categories?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    sellerId?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 
     @Field(() => UserOrderByWithRelationInput, {nullable:true})
-    seller?: UserOrderByWithRelationInput;
+    User?: UserOrderByWithRelationInput;
 }

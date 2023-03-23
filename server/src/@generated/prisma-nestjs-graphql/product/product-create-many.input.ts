@@ -29,6 +29,6 @@ export class ProductCreateManyInput {
     @Field(() => ProductCreatecategoriesInput, {nullable:true})
     categories?: ProductCreatecategoriesInput;
 
-    @Field(() => Int, {nullable:true})
-    sellerId?: number;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 }

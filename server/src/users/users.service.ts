@@ -15,15 +15,14 @@ export class UsersService {
     });
   }
 
-  findAll(orderBy?: OrderByParams) {
-    const { field, direction } = orderBy || {};
-    return this.prisma.user.findMany({
-      orderBy: { [field]: direction },
-    });
+  findAll() {
+    return this.prisma.user.findMany({});
   }
 
   findOne(id: number) {
-    return this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user
+      .findUnique({ where: { id }, include: { products: true } })
+      .products();
   }
 
   async update(id: number, updateUserInput: UserUpdateInput) {

@@ -29,9 +29,9 @@ export class Product {
     @Field(() => [Category], {nullable:true})
     categories!: Array<keyof typeof Category>;
 
-    @Field(() => Int, {nullable:true})
-    sellerId!: number | null;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 
     @Field(() => User, {nullable:true})
-    seller?: User | null;
+    User?: User | null;
 }

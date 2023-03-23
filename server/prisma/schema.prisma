@@ -43,8 +43,8 @@ model Product {
   /// @Validator.MinLength(3)
   description String
   categories  Category[]
-  sellerId    Int?
-  seller      User?      @relation(fields: [sellerId], references: [id])
+  userId      Int
+  User        User?      @relation(fields: [userId], references: [id])
 }
 
 enum Role {

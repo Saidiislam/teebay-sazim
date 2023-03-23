@@ -18,8 +18,8 @@ type Product {
   title: String!
   description: String!
   categories: [Category!]!
-  sellerId: Int!
-  seller: [User]
+  userId: Int!
+  User: [User!]
 }
 
 input CreateProductInput {
@@ -30,7 +30,7 @@ input CreateProductInput {
   title: String!
   description: String!
   categories: [Category!]!
-  sellerId: Int!
+  userId: Int!
 }
 
 # Going to work on update later
@@ -41,7 +41,7 @@ input UpdateProductInput {
   title: String
   description: String
   categories: [Category!]
-  sellerId: Int
+  userId: Int
 }
 
 input OrderByParams {

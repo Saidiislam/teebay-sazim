@@ -32,8 +32,8 @@ export class ProductGroupBy {
     @Field(() => [Category], {nullable:true})
     categories?: Array<keyof typeof Category>;
 
-    @Field(() => Int, {nullable:true})
-    sellerId?: number;
+    @Field(() => Int, {nullable:false})
+    userId!: number;
 
     @Field(() => ProductCountAggregate, {nullable:true})
     _count?: ProductCountAggregate;

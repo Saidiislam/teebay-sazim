@@ -28,5 +28,5 @@ export class ProductCreateInput {
     categories?: ProductCreatecategoriesInput;
 
     @Field(() => UserCreateNestedOneWithoutProductsInput, {nullable:true})
-    seller?: UserCreateNestedOneWithoutProductsInput;
+    User?: UserCreateNestedOneWithoutProductsInput;
 }

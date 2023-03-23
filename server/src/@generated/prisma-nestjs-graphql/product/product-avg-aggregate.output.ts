@@ -12,5 +12,5 @@ export class ProductAvgAggregate {
     price?: number;
 
     @Field(() => Float, {nullable:true})
-    sellerId?: number;
+    userId?: number;
 }

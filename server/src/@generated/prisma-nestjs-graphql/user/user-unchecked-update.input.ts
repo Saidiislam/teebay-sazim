@@ -4,7 +4,7 @@ import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operat
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { UserUpdateroleInput } from './user-updaterole.input';
-import { ProductUncheckedUpdateManyWithoutSellerNestedInput } from '../product/product-unchecked-update-many-without-seller-nested.input';
+import { ProductUncheckedUpdateManyWithoutUserNestedInput } from '../product/product-unchecked-update-many-without-user-nested.input';
 
 @InputType()
 export class UserUncheckedUpdateInput {
@@ -27,6 +27,6 @@ export class UserUncheckedUpdateInput {
     @Field(() => UserUpdateroleInput, {nullable:true})
     role?: UserUpdateroleInput;
 
-    @Field(() => ProductUncheckedUpdateManyWithoutSellerNestedInput, {nullable:true})
-    products?: ProductUncheckedUpdateManyWithoutSellerNestedInput;
+    @Field(() => ProductUncheckedUpdateManyWithoutUserNestedInput, {nullable:true})
+    products?: ProductUncheckedUpdateManyWithoutUserNestedInput;
 }

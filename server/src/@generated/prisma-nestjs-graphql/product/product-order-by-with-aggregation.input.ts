@@ -32,7 +32,7 @@ export class ProductOrderByWithAggregationInput {
     categories?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    sellerId?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 
     @Field(() => ProductCountOrderByAggregateInput, {nullable:true})
     _count?: ProductCountOrderByAggregateInput;

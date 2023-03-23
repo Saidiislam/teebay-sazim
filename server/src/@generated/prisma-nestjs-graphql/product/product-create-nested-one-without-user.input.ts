@@ -7,16 +7,15 @@ import { ProductWhereUniqueInput } from './product-where-unique.input';
 
 @InputType()
 export class ProductCreateNestedOneWithoutUserInput {
+  @Field(() => ProductCreateWithoutUserInput, { nullable: true })
+  @Type(() => ProductCreateWithoutUserInput)
+  create?: ProductCreateWithoutUserInput;
 
-    @Field(() => ProductCreateWithoutUserInput, {nullable:true})
-    @Type(() => ProductCreateWithoutUserInput)
-    create?: ProductCreateWithoutUserInput;
+  @Field(() => ProductCreateOrConnectWithoutUserInput, { nullable: true })
+  @Type(() => ProductCreateOrConnectWithoutUserInput)
+  connectOrCreate?: ProductCreateOrConnectWithoutUserInput;
 
-    @Field(() => ProductCreateOrConnectWithoutUserInput, {nullable:true})
-    @Type(() => ProductCreateOrConnectWithoutUserInput)
-    connectOrCreate?: ProductCreateOrConnectWithoutUserInput;
-
-    @Field(() => ProductWhereUniqueInput, {nullable:true})
-    @Type(() => ProductWhereUniqueInput)
-    connect?: ProductWhereUniqueInput;
+  @Field(() => ProductWhereUniqueInput, { nullable: true })
+  @Type(() => ProductWhereUniqueInput)
+  connect?: ProductWhereUniqueInput;
 }

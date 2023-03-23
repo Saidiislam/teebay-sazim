@@ -12,5 +12,5 @@ export class ProductSumAggregate {
     price?: number;
 
     @Field(() => Int, {nullable:true})
-    sellerId?: number;
+    userId?: number;
 }

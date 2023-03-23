@@ -11,5 +11,5 @@ export class ProductSumAggregateInput {
     price?: true;
 
     @Field(() => Boolean, {nullable:true})
-    sellerId?: true;
+    userId?: true;
 }

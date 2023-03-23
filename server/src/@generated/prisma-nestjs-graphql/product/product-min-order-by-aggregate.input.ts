@@ -24,5 +24,5 @@ export class ProductMinOrderByAggregateInput {
     description?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
-    sellerId?: keyof typeof SortOrder;
+    userId?: keyof typeof SortOrder;
 }

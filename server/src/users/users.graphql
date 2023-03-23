@@ -33,7 +33,7 @@ input UpdateUserInput {
 }
 
 type Query {
-  users(orderBy: OrderByParams): [User]!
+  users: [User]!
   user(id: Int!): User
 }
 

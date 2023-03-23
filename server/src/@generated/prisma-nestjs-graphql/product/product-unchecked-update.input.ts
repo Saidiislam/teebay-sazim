@@ -4,7 +4,6 @@ import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operat
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
 import { ProductUpdatecategoriesInput } from './product-updatecategories.input';
-import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 
 @InputType()
 export class ProductUncheckedUpdateInput {
@@ -30,6 +29,6 @@ export class ProductUncheckedUpdateInput {
     @Field(() => ProductUpdatecategoriesInput, {nullable:true})
     categories?: ProductUpdatecategoriesInput;
 
-    @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
-    sellerId?: NullableIntFieldUpdateOperationsInput;
+    @Field(() => IntFieldUpdateOperationsInput, {nullable:true})
+    userId?: IntFieldUpdateOperationsInput;
 }

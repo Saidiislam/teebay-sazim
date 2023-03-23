@@ -1,11 +1,22 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  ResolveField,
+  Parent,
+  Query,
+  Mutation,
+  Args,
+} from '@nestjs/graphql';
 import { UsersService } from './users.service';
 import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-create.input';
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
+import { ProductsService } from '../../src/products/products.service';
 
 @Resolver('User')
 export class UsersResolver {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private productsService: ProductsService,
+  ) {}
 
   @Mutation('createUser')
   async create(@Args('createUserInput') createUserInput: UserCreateInput) {
@@ -35,5 +46,12 @@ export class UsersResolver {
   @Mutation('removeUser')
   remove(@Args('id') id: number) {
     return this.usersService.remove(id);
+  }
+
+  // To nest all the products under user
+  @ResolveField('products')
+  async getProducts(@Parent() user) {
+    const { id } = user;
+    return this.productsService.findAll(id);
   }
 }

@@ -29,7 +29,7 @@ export class CreateProductInput {
     title: string;
     description: string;
     categories: Category[];
-    sellerId: number;
+    userId: number;
 }
 
 export class UpdateProductInput {
@@ -39,7 +39,7 @@ export class UpdateProductInput {
     title?: Nullable<string>;
     description?: Nullable<string>;
     categories?: Nullable<Category[]>;
-    sellerId?: Nullable<number>;
+    userId?: Nullable<number>;
 }
 
 export class OrderByParams {
@@ -71,8 +71,8 @@ export class Product {
     title: string;
     description: string;
     categories: Category[];
-    sellerId: number;
-    seller?: Nullable<Nullable<User>[]>;
+    userId: number;
+    User?: Nullable<User[]>;
 }
 
 export abstract class IQuery {
@@ -80,7 +80,7 @@ export abstract class IQuery {
 
     abstract product(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 
-    abstract users(orderBy?: Nullable<OrderByParams>): Nullable<User>[] | Promise<Nullable<User>[]>;
+    abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
 }

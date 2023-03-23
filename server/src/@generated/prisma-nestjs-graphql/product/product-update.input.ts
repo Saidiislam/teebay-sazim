@@ -28,5 +28,5 @@ export class ProductUpdateInput {
     categories?: ProductUpdatecategoriesInput;
 
     @Field(() => UserUpdateOneWithoutProductsNestedInput, {nullable:true})
-    seller?: UserUpdateOneWithoutProductsNestedInput;
+    User?: UserUpdateOneWithoutProductsNestedInput;
 }

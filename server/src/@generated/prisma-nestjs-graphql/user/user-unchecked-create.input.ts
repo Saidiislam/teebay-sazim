@@ -3,7 +3,7 @@ import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import * as Validator from 'class-validator';
 import { UserCreateroleInput } from './user-createrole.input';
-import { ProductUncheckedCreateNestedManyWithoutSellerInput } from '../product/product-unchecked-create-nested-many-without-seller.input';
+import { ProductUncheckedCreateNestedManyWithoutUserInput } from '../product/product-unchecked-create-nested-many-without-user.input';
 
 @InputType()
 export class UserUncheckedCreateInput {
@@ -27,6 +27,6 @@ export class UserUncheckedCreateInput {
     @Field(() => UserCreateroleInput, {nullable:true})
     role?: UserCreateroleInput;
 
-    @Field(() => ProductUncheckedCreateNestedManyWithoutSellerInput, {nullable:true})
-    products?: ProductUncheckedCreateNestedManyWithoutSellerInput;
+    @Field(() => ProductUncheckedCreateNestedManyWithoutUserInput, {nullable:true})
+    products?: ProductUncheckedCreateNestedManyWithoutUserInput;
 }
