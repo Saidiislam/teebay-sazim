@@ -32,6 +32,15 @@ input CreateUserInput {
   updatedAt: DateTime
 }
 
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type LoggedUserOutput {
+  access_token: String!
+}
+
 input UpdateUserInput {
   firstName: String
   lastName: String
@@ -52,5 +61,6 @@ type Query {
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
+  loginUser(loginUserInput: LoginUserInput!): LoggedUserOutput!
   removeUser(id: Int!): User
 }

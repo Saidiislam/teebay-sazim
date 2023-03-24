@@ -17,8 +17,8 @@ export class Product {
     @Field(() => Int, {nullable:false})
     price!: number;
 
-    @Field(() => Boolean, {nullable:false,defaultValue:false})
-    isSold!: boolean;
+    @Field(() => Int, {nullable:false,defaultValue:0})
+    isSold!: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

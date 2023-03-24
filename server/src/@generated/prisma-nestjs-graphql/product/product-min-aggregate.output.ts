@@ -14,8 +14,8 @@ export class ProductMinAggregate {
     @Field(() => Int, {nullable:true})
     price?: number;
 
-    @Field(() => Boolean, {nullable:true})
-    isSold?: boolean;
+    @Field(() => Int, {nullable:true})
+    isSold?: number;
 
     @Field(() => String, {nullable:true})
     title?: string;

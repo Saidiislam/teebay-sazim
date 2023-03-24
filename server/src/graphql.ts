@@ -25,7 +25,7 @@ export enum Role {
 export class CreateProductInput {
     userId: number;
     price: number;
-    isSold: boolean;
+    isSold: number;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -36,7 +36,7 @@ export class CreateProductInput {
 export class UpdateProductInput {
     userId?: Nullable<number>;
     price?: Nullable<number>;
-    isSold?: Nullable<boolean>;
+    isSold?: Nullable<number>;
     title?: Nullable<string>;
     description?: Nullable<string>;
     createdAt?: Nullable<DateTime>;
@@ -61,6 +61,11 @@ export class CreateUserInput {
     updatedAt?: Nullable<DateTime>;
 }
 
+export class LoginUserInput {
+    email: string;
+    password: string;
+}
+
 export class UpdateUserInput {
     firstName?: Nullable<string>;
     lastName?: Nullable<string>;
@@ -77,7 +82,7 @@ export class Product {
     id: number;
     userId: number;
     price: number;
-    isSold: boolean;
+    isSold: number;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -107,6 +112,8 @@ export abstract class IMutation {
 
     abstract updateUser(id: number, updateUserInput: UpdateUserInput): User | Promise<User>;
 
+    abstract loginUser(loginUserInput: LoginUserInput): LoggedUserOutput | Promise<LoggedUserOutput>;
+
     abstract removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
@@ -122,6 +129,10 @@ export class User {
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
     products?: Nullable<Product[]>;
+}
+
+export class LoggedUserOutput {
+    access_token: string;
 }
 
 export type DateTime = any;

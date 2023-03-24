@@ -6,6 +6,8 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   // Setting Basic Preferences and Paths to get GQL
@@ -25,10 +27,12 @@ import { UsersModule } from './users/users.module';
         'subscriptions-transport-ws': true,
       },
     }),
+    ConfigModule.forRoot(),
     ProductsModule,
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthModule],
+  exports: [ConfigModule],
 })
 export class AppModule {}

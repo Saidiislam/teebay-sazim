@@ -1,4 +1,11 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { ProductsService } from './products.service';
 import { OrderByParams } from 'src/graphql';
 import { ProductCreateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-create.input';
@@ -48,6 +55,13 @@ export class ProductsResolver {
 
   @Query('product')
   findOne(@Args('id') id: number) {
+    return this.productsService.findOne(id);
+  }
+
+  // To nest all the products under user
+  @ResolveField('User')
+  async getProducts(@Parent() product) {
+    const { id } = product;
     return this.productsService.findOne(id);
   }
 }

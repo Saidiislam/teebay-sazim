@@ -13,8 +13,8 @@ export class ProductUncheckedCreateWithoutUserInput {
     @Field(() => Int, {nullable:false})
     price!: number;
 
-    @Field(() => Boolean, {nullable:true})
-    isSold?: boolean;
+    @Field(() => Int, {nullable:true})
+    isSold?: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

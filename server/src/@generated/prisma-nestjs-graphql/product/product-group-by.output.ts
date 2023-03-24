@@ -20,8 +20,8 @@ export class ProductGroupBy {
     @Field(() => Int, {nullable:false})
     price!: number;
 
-    @Field(() => Boolean, {nullable:false})
-    isSold!: boolean;
+    @Field(() => Int, {nullable:false})
+    isSold!: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

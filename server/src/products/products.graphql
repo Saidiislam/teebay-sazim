@@ -14,7 +14,7 @@ type Product {
   id: Int!
   userId: Int!
   price: Int!
-  isSold: Boolean!
+  isSold: Int!
   title: String!
   description: String!
   createdAt: DateTime
@@ -28,7 +28,7 @@ input CreateProductInput {
   # Create Product Scheme
   userId: Int!
   price: Int!
-  isSold: Boolean!
+  isSold: Int!
   title: String!
   description: String!
   createdAt: DateTime
@@ -40,7 +40,7 @@ input CreateProductInput {
 input UpdateProductInput {
   userId: Int
   price: Int
-  isSold: Boolean
+  isSold: Int
   title: String
   description: String
   createdAt: DateTime

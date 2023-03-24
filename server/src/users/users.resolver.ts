@@ -10,12 +10,15 @@ import { UsersService } from './users.service';
 import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-create.input';
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
 import { ProductsService } from '../../src/products/products.service';
+import { AuthService } from 'src/auth/auth.service';
+import { LoginUserInput } from 'src/graphql';
 
 @Resolver('User')
 export class UsersResolver {
   constructor(
     private usersService: UsersService,
     private productsService: ProductsService,
+    private authService: AuthService,
   ) {}
 
   @Mutation('createUser')
@@ -32,6 +35,11 @@ export class UsersResolver {
   @Query('user')
   findOne(@Args('id') id: number) {
     return this.usersService.findOne(id);
+  }
+
+  @Mutation('loginUser')
+  loginUser(@Args('loginUserInput') loginUserInput: LoginUserInput) {
+    return this.usersService.loginUser(loginUserInput);
   }
 
   @Mutation('updateUser')
@@ -54,4 +62,11 @@ export class UsersResolver {
     const { id } = user;
     return this.productsService.findAll(id);
   }
+
+  // <=== To Do  ===>
+  // @ResolveField('products')
+  // async getSoldProducts(@Parent() user) {
+  //   const { products } = user;
+  //   return this.productsService.findOne(products.isSold);
+  // }
 }

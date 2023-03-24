@@ -1,7 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { IntFilter } from '../prisma/int-filter.input';
-import { BoolFilter } from '../prisma/bool-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { EnumCategoryNullableListFilter } from '../prisma/enum-category-nullable-list-filter.input';
@@ -27,8 +26,8 @@ export class ProductScalarWhereInput {
     @Field(() => IntFilter, {nullable:true})
     price?: IntFilter;
 
-    @Field(() => BoolFilter, {nullable:true})
-    isSold?: BoolFilter;
+    @Field(() => IntFilter, {nullable:true})
+    isSold?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;
