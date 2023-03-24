@@ -1,6 +1,5 @@
 import { Logger, Module, forwardRef } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthResolver } from './auth.resolver';
 import { UsersModule } from '../users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
@@ -19,7 +18,7 @@ import { ConfigModule } from '@nestjs/config';
 
         return {
           secret: jwtSecret,
-          signOptions: { expiresIn: '600000s' },
+          signOptions: { expiresIn: '6000s' },
         };
       },
       inject: [ConfigService],
@@ -29,7 +28,7 @@ import { ConfigModule } from '@nestjs/config';
     //   signOptions: { expiresIn: '1000s' },
     // }),
   ],
-  providers: [AuthResolver, AuthService],
+  providers: [AuthService],
   exports: [AuthService],
 })
 export class AuthModule {}

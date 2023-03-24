@@ -17,14 +17,21 @@ export class UsersService {
   // Using PrismaService to fetch user
   constructor(
     private prisma: PrismaService,
-    // @Inject(forwardRef(() => AuthService))
+    @Inject(forwardRef(() => AuthService))
     private authService: AuthService,
   ) {}
 
+  /**
+   * Finds every item
+   */
   findAll() {
     return this.prisma.user.findMany({ include: { products: true } });
   }
 
+  /**
+   * Finds a single item based on integer
+   * @param id
+   */
   findOne(id: number) {
     return this.prisma.user.findUnique({
       where: { id },
@@ -32,6 +39,10 @@ export class UsersService {
     });
   }
 
+  /**
+   * Finds Email and returns it
+   * @param email
+   */
   async findEmail(email: string) {
     return await this.prisma.user.findUnique({
       where: { email },
@@ -39,6 +50,10 @@ export class UsersService {
   }
 
   // OK
+  /**
+   * Logs In with credentials
+   * @param loginUserInput
+   */
   async loginUser(loginUserInput: UserLoginInput) {
     const user = await this.authService.validateUser(
       loginUserInput.email,
@@ -66,6 +81,7 @@ export class UsersService {
   /**
    * Updates user basic credentials
    * @param updateUserInput
+   * @param id
    */
   async update(id: number, updateUserInput: UserUpdateInput) {
     const { products, ...rest } = updateUserInput;
@@ -75,7 +91,10 @@ export class UsersService {
       data: updateData,
     });
   }
-
+  /**
+   * Removes a single user
+   * @param id
+   */
   remove(id: number) {
     return this.prisma.user.delete({ where: { id } });
   }

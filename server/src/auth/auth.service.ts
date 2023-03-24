@@ -14,7 +14,12 @@ export class AuthService {
     private jwtTokenService: JwtService,
   ) {}
 
-  // OK
+  /**
+   * checks whether the the user has Email
+   * if true checks password and returns user
+   * @param user
+   * @param password
+   */
   async validateUser(email: string, password: string) {
     const user = await this.usersService.findEmail(email);
     if (user) {
@@ -26,7 +31,11 @@ export class AuthService {
     return null;
   }
 
-  // OK
+  /**
+   * Get the User details
+   * Make a payload and feed it to JWT sign for encryption
+   * @param user
+   */
   async generateUserCredentials(user: User) {
     const payload = {
       email: user.email,
@@ -38,8 +47,9 @@ export class AuthService {
       address: user.address,
     };
 
+    // String matching instead of JWT sign
     return {
-      access_token: 'yes',
+      access_token: 'Bearer token',
     };
   }
 }
