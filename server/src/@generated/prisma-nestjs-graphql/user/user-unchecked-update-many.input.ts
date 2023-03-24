@@ -28,6 +28,9 @@ export class UserUncheckedUpdateManyInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     email?: StringFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    password?: StringFieldUpdateOperationsInput;
+
     @Field(() => EnumRoleFieldUpdateOperationsInput, {nullable:true})
     role?: EnumRoleFieldUpdateOperationsInput;
 

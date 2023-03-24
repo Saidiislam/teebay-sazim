@@ -12,6 +12,7 @@ async function main() {
       address: 'Tongi',
       phone: 1984715553,
       email: 'yeasin@ea.com',
+      password: 'patapata',
       role: 'ADMIN',
     },
   });

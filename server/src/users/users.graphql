@@ -1,6 +1,5 @@
 scalar DateTime
 
-
 enum Role {
   ADMIN
   USER
@@ -14,6 +13,7 @@ type User {
   address: String
   phone: Int
   email: String!
+  password: String!
   role: Role!
   createdAt: DateTime
   updatedAt: DateTime
@@ -26,6 +26,7 @@ input CreateUserInput {
   address: String
   phone: Int
   email: String!
+  password: String!
   role: Role!
   createdAt: DateTime
   updatedAt: DateTime
@@ -37,6 +38,7 @@ input UpdateUserInput {
   address: String
   phone: Int
   email: String
+  password: String
   role: Role
   createdAt: DateTime
   updatedAt: DateTime

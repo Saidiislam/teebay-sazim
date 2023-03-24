@@ -38,6 +38,9 @@ export class UserWhereInput {
     @Field(() => StringFilter, {nullable:true})
     email?: StringFilter;
 
+    @Field(() => StringFilter, {nullable:true})
+    password?: StringFilter;
+
     @Field(() => EnumRoleFilter, {nullable:true})
     role?: EnumRoleFilter;
 

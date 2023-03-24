@@ -24,6 +24,9 @@ export class UserCountAggregate {
     email!: number;
 
     @Field(() => Int, {nullable:false})
+    password!: number;
+
+    @Field(() => Int, {nullable:false})
     role!: number;
 
     @Field(() => Int, {nullable:false})

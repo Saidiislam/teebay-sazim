@@ -12,6 +12,7 @@ CREATE TABLE "User" (
     "address" TEXT,
     "phone" INTEGER,
     "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'USER',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -23,7 +24,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
-    "price" DECIMAL(65,30) NOT NULL,
+    "price" INTEGER NOT NULL,
     "isSold" BOOLEAN NOT NULL DEFAULT false,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { OrderByParams } from 'src/graphql';
+import * as bcrypt from 'bcrypt';
 import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-create.input';
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
 
@@ -26,7 +27,10 @@ export class UsersService {
     });
   }
 
-  create(createUserInput: UserCreateInput) {
+  async create(createUserInput: UserCreateInput) {
+    const saltOrRounds = 10;
+    const password = createUserInput.password;
+    createUserInput.password = await bcrypt.hash(password, saltOrRounds);
     return this.prisma.user.create({
       data: createUserInput,
     });

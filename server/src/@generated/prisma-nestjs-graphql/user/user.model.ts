@@ -27,6 +27,9 @@ export class User {
     @Field(() => String, {nullable:false})
     email!: string;
 
+    @Field(() => String, {nullable:false})
+    password!: string;
+
     @Field(() => Role, {nullable:false,defaultValue:'USER'})
     role!: keyof typeof Role;
 

@@ -55,6 +55,7 @@ export class CreateUserInput {
     address?: Nullable<string>;
     phone?: Nullable<number>;
     email: string;
+    password: string;
     role: Role;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
@@ -66,6 +67,7 @@ export class UpdateUserInput {
     address?: Nullable<string>;
     phone?: Nullable<number>;
     email?: Nullable<string>;
+    password?: Nullable<string>;
     role?: Nullable<Role>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
@@ -115,6 +117,7 @@ export class User {
     address?: Nullable<string>;
     phone?: Nullable<number>;
     email: string;
+    password: string;
     role: Role;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;

@@ -29,6 +29,9 @@ export class UserGroupBy {
     @Field(() => String, {nullable:false})
     email!: string;
 
+    @Field(() => String, {nullable:false})
+    password!: string;
+
     @Field(() => Role, {nullable:false})
     role!: keyof typeof Role;
 

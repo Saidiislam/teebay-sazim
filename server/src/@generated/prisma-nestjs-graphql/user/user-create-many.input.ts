@@ -26,6 +26,9 @@ export class UserCreateManyInput {
     @Validator.IsEmail()
     email!: string;
 
+    @Field(() => String, {nullable:false})
+    password!: string;
+
     @Field(() => Role, {nullable:true})
     role?: keyof typeof Role;
 
