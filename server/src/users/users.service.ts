@@ -5,12 +5,14 @@ import {
   forwardRef,
 } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { OrderByParams } from 'src/graphql';
+import { FilterByParams, OrderByParams } from 'src/graphql';
 import * as bcrypt from 'bcrypt';
 import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-create.input';
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
 import { AuthService } from 'src/auth/auth.service';
 import { UserLoginInput } from './dto/login-user.input';
+import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-many-user.args';
+import { UserWhereInput } from 'src/@generated/prisma-nestjs-graphql/user/user-where.input';
 
 @Injectable()
 export class UsersService {
@@ -24,8 +26,13 @@ export class UsersService {
   /**
    * Finds every item
    */
-  findAll() {
-    return this.prisma.user.findMany({ include: { products: true } });
+  findAll(filter?: FilterByParams) {
+    const { filterBy, filterValue } = filter || {};
+    const whereClause = { [filterBy]: filterValue };
+    return this.prisma.user.findMany({
+      where: whereClause,
+      include: { products: true },
+    });
   }
 
   /**

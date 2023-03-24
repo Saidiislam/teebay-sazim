@@ -11,7 +11,7 @@ import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
 import { ProductsService } from '../../src/products/products.service';
 import { AuthService } from 'src/auth/auth.service';
-import { LoginUserInput } from 'src/graphql';
+import { FilterByParams, LoginUserInput } from 'src/graphql';
 
 @Resolver('User')
 export class UsersResolver {
@@ -27,9 +27,13 @@ export class UsersResolver {
     return created;
   }
 
+  //WIP
   @Query('users')
-  findAll() {
-    return this.usersService.findAll();
+  findAll(
+    @Args('filter')
+    filter?: FilterByParams,
+  ) {
+    return this.usersService.findAll(filter);
   }
 
   @Query('user')

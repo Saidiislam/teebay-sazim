@@ -78,6 +78,11 @@ export class UpdateUserInput {
     updatedAt?: Nullable<DateTime>;
 }
 
+export class FilterByParams {
+    filterBy?: Nullable<string>;
+    filterValue?: Nullable<string>;
+}
+
 export class Product {
     id: number;
     userId: number;
@@ -96,7 +101,7 @@ export abstract class IQuery {
 
     abstract product(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 
-    abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
+    abstract users(filter?: Nullable<FilterByParams>): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: number): Nullable<User> | Promise<Nullable<User>>;
 }

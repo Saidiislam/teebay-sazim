@@ -53,8 +53,13 @@ input UpdateUserInput {
   updatedAt: DateTime
 }
 
+input FilterByParams {
+  filterBy: String
+  filterValue: String
+}
+
 type Query {
-  users: [User]!
+  users(filter: FilterByParams): [User]!
   user(id: Int!): User
 }
 
