@@ -66,11 +66,4 @@ export class UsersResolver {
     const { id } = user;
     return this.productsService.findAll(id);
   }
-
-  // <=== To Do  ===>
-  // @ResolveField('products')
-  // async getSoldProducts(@Parent() user) {
-  //   const { products } = user;
-  //   return this.productsService.findOne(products.isSold);
-  // }
 }

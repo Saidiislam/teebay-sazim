@@ -40,12 +40,13 @@ model User {
   products Product[]
   // Rented     Rent[]
 }
+
 // <=== TODO: Add fields of rent ===>
 model Product {
   id          Int      @id @default(autoincrement())
+  status      Status   @default(UNSOLD)
   userId      Int
   price       Int
-  isSold      Int  @default(0)
   title       String
   /// @Validator.MinLength(3)
   description String
@@ -54,25 +55,19 @@ model Product {
 
   categories Category[]
   User       User?      @relation(fields: [userId], references: [id])
-  // Rent       Rent[]
-}
-
-model Rent {
-  id        Int      @id @default(autoincrement())
-  userId    Int?
-  productId Int?
-  startData DateTime
-  endDate   DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // User    User?    @relation(fields: [userId], references: [id])
-  // Product Product? @relation(fields: [productId], references: [id])
 }
 
 enum Role {
   ADMIN
   USER
+}
+
+enum Status {
+  UNSOLD
+  SOLD
+  LENT
+  BROUGHT
+  BORROWED
 }
 
 enum Category {

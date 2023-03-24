@@ -13,7 +13,4 @@ export class ProductAvgAggregate {
 
     @Field(() => Float, {nullable:true})
     price?: number;
-
-    @Field(() => Float, {nullable:true})
-    isSold?: number;
 }

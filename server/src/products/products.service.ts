@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProductCreateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-create.input';
 import { ProductUpdateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-update.input';
-import { OrderByParams } from 'src/graphql';
+import { FilterByParams, OrderByParams } from 'src/graphql';
 
 @Injectable()
 export class ProductsService {
@@ -15,10 +15,12 @@ export class ProductsService {
     });
   }
 
-  findAll(orderBy?: OrderByParams) {
+  findAll(orderBy?: OrderByParams, filter?: FilterByParams) {
     const { field, direction } = orderBy || {};
-
+    const { filterBy, filterValue } = filter || {};
+    const whereClause = { [filterBy]: filterValue };
     return this.prisma.product.findMany({
+      where: whereClause,
       orderBy: { [field]: direction },
     });
   }

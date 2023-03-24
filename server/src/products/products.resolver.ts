@@ -7,7 +7,7 @@ import {
   Parent,
 } from '@nestjs/graphql';
 import { ProductsService } from './products.service';
-import { OrderByParams } from 'src/graphql';
+import { FilterByParams, OrderByParams } from 'src/graphql';
 import { ProductCreateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-create.input';
 import { ProductUpdateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-update.input';
 import { UserEntity } from 'src/common/decorators/user.decorator';
@@ -49,8 +49,10 @@ export class ProductsResolver {
   findAll(
     @Args('orderBy')
     orderBy?: OrderByParams,
+    @Args('filter')
+    filter?: FilterByParams,
   ) {
-    return this.productsService.findAll(orderBy);
+    return this.productsService.findAll(orderBy, filter);
   }
 
   @Query('product')

@@ -8,13 +8,13 @@ export class ProductMaxAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
+    status?: true;
+
+    @Field(() => Boolean, {nullable:true})
     userId?: true;
 
     @Field(() => Boolean, {nullable:true})
     price?: true;
-
-    @Field(() => Boolean, {nullable:true})
-    isSold?: true;
 
     @Field(() => Boolean, {nullable:true})
     title?: true;

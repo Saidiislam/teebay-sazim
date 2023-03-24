@@ -2,6 +2,9 @@
 CREATE TYPE "Role" AS ENUM ('ADMIN', 'USER');
 
 -- CreateEnum
+CREATE TYPE "Status" AS ENUM ('UNSOLD', 'SOLD', 'LENT', 'BROUGHT', 'BORROWED');
+
+-- CreateEnum
 CREATE TYPE "Category" AS ENUM ('ELECTRONICS', 'FURNITURE', 'HOME_APPLIANCES', 'SPORTING_GOODS', 'OUTDOOR', 'TOYS');
 
 -- CreateTable
@@ -23,9 +26,9 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
+    "status" "Status" NOT NULL DEFAULT 'UNSOLD',
     "userId" INTEGER NOT NULL,
     "price" INTEGER NOT NULL,
-    "isSold" BOOLEAN NOT NULL DEFAULT false,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,19 +36,6 @@ CREATE TABLE "Product" (
     "categories" "Category"[],
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Rent" (
-    "id" SERIAL NOT NULL,
-    "userId" INTEGER,
-    "productId" INTEGER,
-    "startData" TIMESTAMP(3) NOT NULL,
-    "endDate" TIMESTAMP(3) NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "Rent_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

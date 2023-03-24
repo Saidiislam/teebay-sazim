@@ -9,13 +9,13 @@ export class ProductCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
+    status!: number;
+
+    @Field(() => Int, {nullable:false})
     userId!: number;
 
     @Field(() => Int, {nullable:false})
     price!: number;
-
-    @Field(() => Int, {nullable:false})
-    isSold!: number;
 
     @Field(() => Int, {nullable:false})
     title!: number;

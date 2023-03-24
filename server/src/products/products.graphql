@@ -9,12 +9,20 @@ enum Category {
   TOYS
 }
 
+enum Status {
+  UNSOLD
+  SOLD
+  LENT
+  BROUGHT
+  BORROWED
+}
+
 type Product {
   # Product Scheme
   id: Int!
+  status: Status!
   userId: Int!
   price: Int!
-  isSold: Int!
   title: String!
   description: String!
   createdAt: DateTime
@@ -26,9 +34,9 @@ type Product {
 
 input CreateProductInput {
   # Create Product Scheme
+  status: Status
   userId: Int!
   price: Int!
-  isSold: Int!
   title: String!
   description: String!
   createdAt: DateTime
@@ -38,9 +46,9 @@ input CreateProductInput {
 }
 
 input UpdateProductInput {
+  status: Status
   userId: Int
   price: Int
-  isSold: Int
   title: String
   description: String
   createdAt: DateTime
@@ -54,8 +62,13 @@ input OrderByParams {
   direction: String
 }
 
+input FilterByParams {
+  filterBy: String
+  filterValue: String
+}
+
 type Query {
-  products(orderBy: OrderByParams): [Product]!
+  products(orderBy: OrderByParams, filter: FilterByParams): [Product]!
   product(id: Int!): Product
 }
 

@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Status } from '../prisma/status.enum';
 import * as Validator from 'class-validator';
 import { ProductCreatecategoriesInput } from './product-createcategories.input';
 
@@ -10,11 +11,11 @@ export class ProductUncheckedCreateWithoutUserInput {
     @Field(() => Int, {nullable:true})
     id?: number;
 
+    @Field(() => Status, {nullable:true})
+    status?: keyof typeof Status;
+
     @Field(() => Int, {nullable:false})
     price!: number;
-
-    @Field(() => Int, {nullable:true})
-    isSold?: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

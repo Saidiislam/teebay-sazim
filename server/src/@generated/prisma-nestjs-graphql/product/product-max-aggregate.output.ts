@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Status } from '../prisma/status.enum';
 
 @ObjectType()
 export class ProductMaxAggregate {
@@ -8,14 +9,14 @@ export class ProductMaxAggregate {
     @Field(() => Int, {nullable:true})
     id?: number;
 
+    @Field(() => Status, {nullable:true})
+    status?: keyof typeof Status;
+
     @Field(() => Int, {nullable:true})
     userId?: number;
 
     @Field(() => Int, {nullable:true})
     price?: number;
-
-    @Field(() => Int, {nullable:true})
-    isSold?: number;
 
     @Field(() => String, {nullable:true})
     title?: string;

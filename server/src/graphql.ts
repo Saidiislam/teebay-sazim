@@ -17,15 +17,23 @@ export enum Category {
     TOYS = "TOYS"
 }
 
+export enum Status {
+    UNSOLD = "UNSOLD",
+    SOLD = "SOLD",
+    LENT = "LENT",
+    BROUGHT = "BROUGHT",
+    BORROWED = "BORROWED"
+}
+
 export enum Role {
     ADMIN = "ADMIN",
     USER = "USER"
 }
 
 export class CreateProductInput {
+    status?: Nullable<Status>;
     userId: number;
     price: number;
-    isSold: number;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -34,9 +42,9 @@ export class CreateProductInput {
 }
 
 export class UpdateProductInput {
+    status?: Nullable<Status>;
     userId?: Nullable<number>;
     price?: Nullable<number>;
-    isSold?: Nullable<number>;
     title?: Nullable<string>;
     description?: Nullable<string>;
     createdAt?: Nullable<DateTime>;
@@ -47,6 +55,11 @@ export class UpdateProductInput {
 export class OrderByParams {
     field?: Nullable<string>;
     direction?: Nullable<string>;
+}
+
+export class FilterByParams {
+    filterBy?: Nullable<string>;
+    filterValue?: Nullable<string>;
 }
 
 export class CreateUserInput {
@@ -78,16 +91,11 @@ export class UpdateUserInput {
     updatedAt?: Nullable<DateTime>;
 }
 
-export class FilterByParams {
-    filterBy?: Nullable<string>;
-    filterValue?: Nullable<string>;
-}
-
 export class Product {
     id: number;
+    status: Status;
     userId: number;
     price: number;
-    isSold: number;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -97,7 +105,7 @@ export class Product {
 }
 
 export abstract class IQuery {
-    abstract products(orderBy?: Nullable<OrderByParams>): Nullable<Product>[] | Promise<Nullable<Product>[]>;
+    abstract products(orderBy?: Nullable<OrderByParams>, filter?: Nullable<FilterByParams>): Nullable<Product>[] | Promise<Nullable<Product>[]>;
 
     abstract product(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 

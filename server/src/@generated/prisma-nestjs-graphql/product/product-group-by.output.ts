@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { Status } from '../prisma/status.enum';
 import { Category } from '../prisma/category.enum';
 import { ProductCountAggregate } from './product-count-aggregate.output';
 import { ProductAvgAggregate } from './product-avg-aggregate.output';
@@ -14,14 +15,14 @@ export class ProductGroupBy {
     @Field(() => Int, {nullable:false})
     id!: number;
 
+    @Field(() => Status, {nullable:false})
+    status!: keyof typeof Status;
+
     @Field(() => Int, {nullable:false})
     userId!: number;
 
     @Field(() => Int, {nullable:false})
     price!: number;
-
-    @Field(() => Int, {nullable:false})
-    isSold!: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

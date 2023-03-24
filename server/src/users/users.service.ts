@@ -5,15 +5,12 @@ import {
   forwardRef,
 } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
-import { FilterByParams, OrderByParams } from 'src/graphql';
+import { FilterByParams } from 'src/graphql';
 import * as bcrypt from 'bcrypt';
 import { UserCreateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-create.input';
 import { UserUpdateInput } from 'src/@generated/prisma-nestjs-graphql/user/user-update.input';
 import { AuthService } from 'src/auth/auth.service';
 import { UserLoginInput } from './dto/login-user.input';
-import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-many-user.args';
-import { UserWhereInput } from 'src/@generated/prisma-nestjs-graphql/user/user-where.input';
-
 @Injectable()
 export class UsersService {
   // Using PrismaService to fetch user
