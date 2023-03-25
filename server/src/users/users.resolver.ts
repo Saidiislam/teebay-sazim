@@ -27,7 +27,6 @@ export class UsersResolver {
     return created;
   }
 
-  //WIP
   @Query('users')
   findAll(
     @Args('filter')

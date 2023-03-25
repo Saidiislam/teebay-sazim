@@ -18,7 +18,14 @@ export class ProductsService {
   findAll(orderBy?: OrderByParams, filter?: FilterByParams) {
     const { field, direction } = orderBy || {};
     const { filterBy, filterValue } = filter || {};
-    const whereClause = { [filterBy]: filterValue };
+
+    let whereClause;
+    if (filterBy === 'categories') {
+      whereClause = { [filterBy]: { hasEvery: filterValue } };
+    } else {
+      whereClause = { [filterBy]: filterValue };
+    }
+
     return this.prisma.product.findMany({
       where: whereClause,
       orderBy: { [field]: direction },
