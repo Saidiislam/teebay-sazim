@@ -25,6 +25,7 @@ export const ProductCard = React.memo(
     createdAt,
     switchTo,
     href,
+    stateValue,
     ...rest
   }) => {
     const formattedDate = useMemo(() => {
@@ -58,27 +59,12 @@ export const ProductCard = React.memo(
           {...rest}
         >
           {/* Top Part: Title and buttons */}
-          <Flex minWidth="max-content" alignItems="center" gap="2">
+          <Flex minWidth="max-content" alignItems="left" gap="2">
             <Box>
               <Heading size="md" overflowWrap="break-word" maxW="30ch">
                 {title}
               </Heading>
             </Box>
-            <Spacer />
-            <ButtonGroup gap="2">
-              <IconButton
-                variant={"ghost"}
-                colorScheme={"teal"}
-                aria-label="Edit Post"
-                icon={<FaPencilAlt />}
-              />
-              <IconButton
-                variant={"ghost"}
-                colorScheme={"red"}
-                aria-label="Delete Post"
-                icon={<FaTrashAlt />}
-              />
-            </ButtonGroup>
           </Flex>
           {/* Mid Part: Badges and desc */}
           <Text fontSize="md" mb={2}>

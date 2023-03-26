@@ -41,3 +41,11 @@ export const GET_SINGLE_PRODUCT = gql`
     }
   }
 `;
+
+export const REMOVE_PRODUCT = gql`
+  mutation Mutation($removeProductId: Int!) {
+    removeProduct(id: $removeProductId) {
+      id
+    }
+  }
+`;
