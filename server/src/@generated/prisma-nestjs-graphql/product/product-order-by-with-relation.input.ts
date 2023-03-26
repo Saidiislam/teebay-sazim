@@ -19,6 +19,15 @@ export class ProductOrderByWithRelationInput {
     price?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
+    rentPrice?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    rentFrom?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
+    rentTo?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
     title?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})

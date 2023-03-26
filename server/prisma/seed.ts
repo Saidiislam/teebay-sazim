@@ -8,13 +8,13 @@ async function main() {
   // Checking if prisma is interacting with my DB [DEBUG]
   const create = await prisma.user.create({
     data: {
-      firstName: 'Yeasin',
-      lastName: 'Arafath',
-      address: 'Tongi',
-      phone: 1984715553,
+      firstName: 'Walter',
+      lastName: 'Hartwell White',
+      address: '308 Negra Arroyo Lane, Albuquerque, New Mexico. 87104',
+      phone: 505117898,
       // email is unique, change after every seed
-      email: 'yeasinw@eaw.com',
-      password: 'patapata',
+      email: 'chemistryislove@white.com',
+      password: 'saymyname',
       role: 'ADMIN',
     },
   });

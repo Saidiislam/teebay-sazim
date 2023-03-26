@@ -17,6 +17,15 @@ export class ProductCreateManyUserInput {
     @Field(() => Int, {nullable:false})
     price!: number;
 
+    @Field(() => Int, {nullable:false})
+    rentPrice!: number;
+
+    @Field(() => Date, {nullable:true})
+    rentFrom?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    rentTo?: Date | string;
+
     @Field(() => String, {nullable:false})
     title!: string;
 

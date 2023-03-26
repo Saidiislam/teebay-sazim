@@ -21,6 +21,15 @@ export class Product {
     @Field(() => Int, {nullable:false})
     price!: number;
 
+    @Field(() => Int, {nullable:false})
+    rentPrice!: number;
+
+    @Field(() => Date, {nullable:true})
+    rentFrom!: Date | null;
+
+    @Field(() => Date, {nullable:true})
+    rentTo!: Date | null;
+
     @Field(() => String, {nullable:false})
     title!: string;
 

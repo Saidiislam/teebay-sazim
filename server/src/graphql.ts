@@ -34,6 +34,9 @@ export class CreateProductInput {
     status?: Nullable<Status>;
     userId: number;
     price: number;
+    rentPrice: number;
+    rentFrom?: Nullable<DateTime>;
+    rentTo?: Nullable<DateTime>;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -45,6 +48,9 @@ export class UpdateProductInput {
     status?: Nullable<Status>;
     userId?: Nullable<number>;
     price?: Nullable<number>;
+    rentPrice?: Nullable<number>;
+    rentFrom?: Nullable<DateTime>;
+    rentTo?: Nullable<DateTime>;
     title?: Nullable<string>;
     description?: Nullable<string>;
     createdAt?: Nullable<DateTime>;
@@ -60,6 +66,11 @@ export class OrderByParams {
 export class FilterByParams {
     filterBy?: Nullable<string>;
     filterValue?: Nullable<string>;
+}
+
+export class FilterByNums {
+    filterNumBy?: Nullable<string>;
+    filterNumValue?: Nullable<number>;
 }
 
 export class CreateUserInput {
@@ -96,6 +107,9 @@ export class Product {
     status: Status;
     userId: number;
     price: number;
+    rentPrice: number;
+    rentFrom?: Nullable<DateTime>;
+    rentTo?: Nullable<DateTime>;
     title: string;
     description: string;
     createdAt?: Nullable<DateTime>;
@@ -105,7 +119,7 @@ export class Product {
 }
 
 export abstract class IQuery {
-    abstract products(orderBy?: Nullable<OrderByParams>, filter?: Nullable<FilterByParams>): Nullable<Product>[] | Promise<Nullable<Product>[]>;
+    abstract products(orderBy?: Nullable<OrderByParams>, filter?: Nullable<FilterByParams>, filterNum?: Nullable<FilterByNums>): Nullable<Product>[] | Promise<Nullable<Product>[]>;
 
     abstract product(id: number): Nullable<Product> | Promise<Nullable<Product>>;
 
@@ -149,4 +163,5 @@ export class LoggedUserOutput {
 }
 
 export type DateTime = any;
+export type B = any;
 type Nullable<T> = T | null;

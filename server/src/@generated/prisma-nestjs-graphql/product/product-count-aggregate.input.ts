@@ -17,6 +17,15 @@ export class ProductCountAggregateInput {
     price?: true;
 
     @Field(() => Boolean, {nullable:true})
+    rentPrice?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    rentFrom?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    rentTo?: true;
+
+    @Field(() => Boolean, {nullable:true})
     title?: true;
 
     @Field(() => Boolean, {nullable:true})

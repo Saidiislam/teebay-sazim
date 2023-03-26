@@ -23,7 +23,7 @@ datasource db {
 // Schemas start here
 //========================
 
-// <=== TODO: Add fields of my product, brought product, lent product and sold product ===>
+// <=== TODO: Todo done ===>
 model User {
   id        Int      @id @default(autoincrement())
   firstName String
@@ -41,17 +41,20 @@ model User {
   // Rented     Rent[]
 }
 
-// <=== TODO: Add fields of rent ===>
+// <=== TODO: Todo done ===>
 model Product {
-  id          Int      @id @default(autoincrement())
-  status      Status   @default(UNSOLD)
+  id          Int       @id @default(autoincrement())
+  status      Status    @default(UNSOLD)
   userId      Int
   price       Int
+  rentPrice   Int
+  rentFrom    DateTime?
+  rentTo      DateTime?
   title       String
   /// @Validator.MinLength(3)
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   categories Category[]
   User       User?      @relation(fields: [userId], references: [id])

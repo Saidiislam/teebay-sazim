@@ -18,6 +18,15 @@ export class ProductCountAggregate {
     price!: number;
 
     @Field(() => Int, {nullable:false})
+    rentPrice!: number;
+
+    @Field(() => Int, {nullable:false})
+    rentFrom!: number;
+
+    @Field(() => Int, {nullable:false})
+    rentTo!: number;
+
+    @Field(() => Int, {nullable:false})
     title!: number;
 
     @Field(() => Int, {nullable:false})

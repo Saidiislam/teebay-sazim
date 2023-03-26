@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'prisma/prisma.service';
 import { ProductCreateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-create.input';
 import { ProductUpdateInput } from 'src/@generated/prisma-nestjs-graphql/product/product-update.input';
-import { FilterByParams, OrderByParams } from 'src/graphql';
+import { FilterByParams, FilterByNums, OrderByParams } from 'src/graphql';
 
 @Injectable()
 export class ProductsService {
@@ -15,13 +15,20 @@ export class ProductsService {
     });
   }
 
-  findAll(orderBy?: OrderByParams, filter?: FilterByParams) {
+  findAll(
+    orderBy?: OrderByParams,
+    filter?: FilterByParams,
+    filterNum?: FilterByNums,
+  ) {
     const { field, direction } = orderBy || {};
     const { filterBy, filterValue } = filter || {};
+    const { filterNumBy, filterNumValue } = filterNum || {};
 
     let whereClause;
     if (filterBy === 'categories') {
-      whereClause = { [filterBy]: { hasEvery: filterValue } };
+      whereClause = { [filterBy]: { hasEvery: [filterValue] } };
+    } else if (filterNum) {
+      whereClause = { [filterNumBy]: filterNumValue };
     } else {
       whereClause = { [filterBy]: filterValue };
     }

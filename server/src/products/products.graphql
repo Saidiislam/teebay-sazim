@@ -23,6 +23,9 @@ type Product {
   status: Status!
   userId: Int!
   price: Int!
+  rentPrice: Int!
+  rentFrom: DateTime
+  rentTo: DateTime
   title: String!
   description: String!
   createdAt: DateTime
@@ -37,6 +40,9 @@ input CreateProductInput {
   status: Status
   userId: Int!
   price: Int!
+  rentPrice: Int!
+  rentFrom: DateTime
+  rentTo: DateTime
   title: String!
   description: String!
   createdAt: DateTime
@@ -49,6 +55,9 @@ input UpdateProductInput {
   status: Status
   userId: Int
   price: Int
+  rentPrice: Int
+  rentFrom: DateTime
+  rentTo: DateTime
   title: String
   description: String
   createdAt: DateTime
@@ -67,8 +76,17 @@ input FilterByParams {
   filterValue: String
 }
 
+input FilterByNums {
+  filterNumBy: String
+  filterNumValue: Int
+}
+
 type Query {
-  products(orderBy: OrderByParams, filter: FilterByParams): [Product]!
+  products(
+    orderBy: OrderByParams
+    filter: FilterByParams
+    filterNum: FilterByNums
+  ): [Product]!
   product(id: Int!): Product
 }
 

@@ -18,6 +18,15 @@ export class ProductMaxAggregate {
     @Field(() => Int, {nullable:true})
     price?: number;
 
+    @Field(() => Int, {nullable:true})
+    rentPrice?: number;
+
+    @Field(() => Date, {nullable:true})
+    rentFrom?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    rentTo?: Date | string;
+
     @Field(() => String, {nullable:true})
     title?: string;
 
