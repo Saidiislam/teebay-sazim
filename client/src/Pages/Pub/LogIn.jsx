@@ -1,8 +1,8 @@
-import { Center, SlideFade } from "@chakra-ui/react";
 import React from "react";
-import { InputField } from "../Components/InputField";
-import { PasswordField } from "../Components/PasswordField";
-import { CustomForm } from "../Components/CustomForm";
+import {Center, SlideFade} from "@chakra-ui/react";
+import {CustomForm} from "../../Components/Forms/CustomForm.jsx";
+import {InputField} from "../../Components/Forms/InputField.jsx";
+import {PasswordField} from "../../Components/Forms/PasswordField.jsx";
 
 export const LogIn = () => {
   return (

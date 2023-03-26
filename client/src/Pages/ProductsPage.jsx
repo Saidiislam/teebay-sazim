@@ -1,26 +1,19 @@
-import React, { useState } from "react";
-import { GET_PRODUCTS } from "../Api/Public";
-import { useQuery, gql } from "@apollo/client";
-import {
-  Box,
-  IconButton,
-  Radio,
-  useRadioGroup,
-  HStack,
-  Button,
-  Wrap,
-} from "@chakra-ui/react";
-import { ProductCard } from "../Components/ProductCard";
-import { PageHeadWSort } from "../Components/PageHeadWSort";
-import { RadioField } from "../Components/RadioField";
-import { ErrorPage } from "./Misc/ErrorPage";
-import { LoadingSkele } from "./Misc/LoadingSkele";
-import { TopBar } from "./Misc/TopBar";
+import React, {useState} from "react";
+import {useQuery} from "@apollo/client";
+import {GET_PRODUCTS} from "../Api/Public.jsx";
+import {Box, Button, HStack, IconButton, Radio, Wrap} from "@chakra-ui/react";
+import {TopBar} from "./Misc/TopBar.jsx";
+import {PageHeadWSort} from "../Components/PageHeadWSort.jsx";
+import {ErrorPage} from "./Misc/ErrorPage.jsx";
+import {LoadingSkele} from "./Misc/LoadingSkele.jsx";
+import {ProductCard} from "../Components/Cards/ProductCard.jsx";
+
 
 export const ProductsPage = () => {
   const [field, setOrderByField] = useState("price");
   const [value, setValue] = useState(undefined);
 
+  // Query to fetch products
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
       orderBy: {
@@ -35,12 +28,13 @@ export const ProductsPage = () => {
     pollInterval: 500,
   });
   console.log(data);
-
   return (
     <>
       <Box w={"100%"}>
+        {/* Navbar? with profile button */}
         <TopBar />
 
+        {/* Page Heading with sort */}
         <PageHeadWSort
           title={"All Products"}
           customOnChange={setOrderByField}
@@ -72,6 +66,7 @@ export const ProductsPage = () => {
 
         <hr style={{ marginBottom: "15px" }} />
 
+        {/* Hard-Coded version of category filter buttons */}
         <HStack gap={2} mb={4}>
           <Wrap spacing="3px" justify="center">
             <Button
@@ -133,7 +128,8 @@ export const ProductsPage = () => {
           </Wrap>
         </HStack>
 
-        {error ? (
+        {/* Going through differnt stages to map the product data */}
+     {error ? (
           <ErrorPage message={error.message} />
         ) : loading ? (
           <LoadingSkele />
@@ -148,6 +144,7 @@ export const ProductsPage = () => {
               price={item.price}
               category={item.categories}
               createdAt={item.updatedAt}
+              switchTo={`/product/${item.id}`}
             />
           ))
         )}

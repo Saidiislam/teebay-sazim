@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { css } from "@emotion/react";
 import { format } from "date-fns";
+import { Link as ReactLink } from "react-router-dom";
 import {
   Box,
   ButtonGroup,
@@ -16,7 +17,16 @@ import {
 
 // using memo to avoid unnecessary re-renders
 export const ProductCard = React.memo(
-  ({ title, description, category, price, createdAt, href, ...rest }) => {
+  ({
+    title,
+    description,
+    category,
+    price,
+    createdAt,
+    switchTo,
+    href,
+    ...rest
+  }) => {
     const formattedDate = useMemo(() => {
       // format createdAt date here
       if (!createdAt) {
@@ -27,6 +37,8 @@ export const ProductCard = React.memo(
 
     return (
       <Link
+        as={ReactLink}
+        to={switchTo}
         href={href}
         css={css`
           text-decoration: none;

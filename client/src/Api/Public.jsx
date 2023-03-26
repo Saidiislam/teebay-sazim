@@ -22,3 +22,22 @@ export const GET_PRODUCTS = gql`
     }
   }
 `;
+
+export const GET_SINGLE_PRODUCT = gql`
+  query ExampleQuery($productId: Int!) {
+    product(id: $productId) {
+      id
+      status
+      userId
+      price
+      rentPrice
+      rentFrom
+      rentTo
+      title
+      description
+      createdAt
+      updatedAt
+      categories
+    }
+  }
+`;

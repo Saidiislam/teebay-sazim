@@ -3,7 +3,7 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { InputField } from "./InputField";
 import { PasswordField } from "./PasswordField";
-import { SignUpVal } from "../Util/YupConfig";
+import { SignUpVal } from "../../Util/YupConfig";
 import { Link as ReactLink } from "react-router-dom";
 
 export const CustomForm = ({

@@ -5,11 +5,12 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { LogIn } from "../Pages/LogIn";
-import { SignUp } from "../Pages/SignUp";
-import { ProductsPage } from "../Pages/ProductsPage";
-import { ErrorPage } from "../Pages/Misc/ErrorPage";
-import { ProfilePage } from "../Pages/ProfilePage";
+import {LogIn} from "../Pages/Pub/LogIn.jsx";
+import {SignUp} from "../Pages/Pub/SignUp.jsx";
+import {ProductsPage} from "../Pages/ProductsPage.jsx";
+import {ProfilePage} from "../Pages/ProfilePage.jsx";
+import {SingleProdPage} from "../Pages/SingleProdPage.jsx";
+;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +19,7 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUp />} />
       <Route path="/" element={<ProductsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/product/:id" element={<ProductsPage />} />
+      <Route path="/product/:id" element={<SingleProdPage />} />
     </>
   )
 );

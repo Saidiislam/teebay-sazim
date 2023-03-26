@@ -1,6 +1,6 @@
 import { useRadioGroup, HStack } from "@chakra-ui/react";
 import { RadioCard } from "./RadioCard";
-import { GET_PRODUCTS } from "../Api/Public";
+import { GET_PRODUCTS } from "../../Api/Public";
 import { useQuery, gql } from "@apollo/client";
 import React, { useState } from "react";
 

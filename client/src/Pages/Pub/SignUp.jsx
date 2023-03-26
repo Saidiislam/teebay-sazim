@@ -1,14 +1,9 @@
-import {
-  Center,
-  NumberInput,
-  NumberInputField,
-  SlideFade,
-} from "@chakra-ui/react";
 import React from "react";
-import { InputField } from "../Components/InputField";
-import { PasswordField } from "../Components/PasswordField";
-import { CustomForm } from "../Components/CustomForm";
-import { NumInputField } from "../Components/NumInputField";
+import {Center, SlideFade} from "@chakra-ui/react";
+import {CustomForm} from "../../Components/Forms/CustomForm.jsx";
+import {InputField} from "../../Components/Forms/InputField.jsx";
+import {NumInputField} from "../../Components/Forms/NumInputField.jsx";
+import {PasswordField} from "../../Components/Forms/PasswordField.jsx";
 
 export const SignUp = () => {
   return (

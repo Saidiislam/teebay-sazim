@@ -1,6 +1,5 @@
 import { Skeleton } from "@chakra-ui/react";
 import React from "react";
-import { ProductCard } from "../../Components/ProductCard";
 
 export const LoadingSkele = () => {
   return (

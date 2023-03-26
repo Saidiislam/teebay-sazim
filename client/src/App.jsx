@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
 import { Heading, VStack, Container, Grid } from "@chakra-ui/react";
-import { ProductsPage } from "./Pages/ProductsPage";
-import { SignUp } from "./Pages/SignUp";
 import { Router } from "./Config/Router";
 
 export const App = () => {
