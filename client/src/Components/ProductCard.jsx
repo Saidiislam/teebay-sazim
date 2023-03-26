@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 // using memo to avoid unnecessary re-renders
-export const Products = React.memo(
+export const ProductCard = React.memo(
   ({ title, description, category, price, createdAt, href, ...rest }) => {
     const formattedDate = useMemo(() => {
       // format createdAt date here
@@ -48,7 +48,9 @@ export const Products = React.memo(
           {/* Top Part: Title and buttons */}
           <Flex minWidth="max-content" alignItems="center" gap="2">
             <Box>
-              <Heading size="md">{title}</Heading>
+              <Heading size="md" overflowWrap="break-word" maxW="30ch">
+                {title}
+              </Heading>
             </Box>
             <Spacer />
             <ButtonGroup gap="2">

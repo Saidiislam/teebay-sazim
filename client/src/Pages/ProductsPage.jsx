@@ -1,21 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 import { GET_PRODUCTS } from "../Api/Public";
 import { useQuery, gql } from "@apollo/client";
-import { Products } from "../Components/Products";
-import { VStack, Box } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Flex,
+  Spacer,
+  Stack,
+  IconButton,
+  RadioGroup,
+  Radio,
+} from "@chakra-ui/react";
+import { FaAnkh } from "react-icons/fa";
+import { ProductCard } from "../Components/ProductCard";
+import { PageHeadWSort } from "../Components/PageHeadWSort";
+import { ErrorPage } from "./Misc/ErrorPage";
+import { LoadingSkele } from "./Misc/LoadingSkele";
+import { TopBar } from "./Misc/TopBar";
 
 export const ProductsPage = () => {
+  const [field, setOrderByField] = useState("price");
+
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
+    variables: {
+      orderBy: {
+        field,
+        direction: "desc",
+      },
+    },
     pollInterval: 500,
   });
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
-
+  console.log(data);
   return (
     <>
       <Box w={"100%"}>
-          {data.products.map((item) => (
-            <Products
+        <TopBar />
+        <PageHeadWSort
+          title={"All Products"}
+          customOnChange={setOrderByField}
+          customValue={field}
+        >
+          <IconButton
+            size="sm"
+            as={Radio}
+            value="createdAt"
+            aria-label="Most Recent"
+            _checked={{
+              bg: "teal.600",
+              color: "white",
+              borderColor: "teal.600",
+            }}
+          />
+          <IconButton
+            size="sm"
+            as={Radio}
+            value="price"
+            aria-label="Most Expensive"
+            _checked={{
+              bg: "teal.600",
+              color: "white",
+              borderColor: "teal.600",
+            }}
+          />
+        </PageHeadWSort>
+        <hr style={{ marginBottom: "15px" }} />
+        {error ? (
+          <ErrorPage message={error.message} />
+        ) : loading ? (
+          <LoadingSkele />
+        ) : data.products.length === 0 ? (
+          <ErrorPage />
+        ) : (
+          data.products.map((item) => (
+            <ProductCard
               key={item.id}
               title={item.title}
               description={item.description}
@@ -23,7 +80,8 @@ export const ProductsPage = () => {
               category={item.categories}
               createdAt={item.updatedAt}
             />
-          ))}
+          ))
+        )}
       </Box>
     </>
   );

@@ -1,8 +1,14 @@
-import { Center, SlideFade } from "@chakra-ui/react";
+import {
+  Center,
+  NumberInput,
+  NumberInputField,
+  SlideFade,
+} from "@chakra-ui/react";
 import React from "react";
 import { InputField } from "../Components/InputField";
 import { PasswordField } from "../Components/PasswordField";
 import { CustomForm } from "../Components/CustomForm";
+import { NumInputField } from "../Components/NumInputField";
 
 export const SignUp = () => {
   return (
@@ -29,7 +35,7 @@ export const SignUp = () => {
 
           <InputField label="Email Address" name="email" placeholder="Email" />
 
-          <InputField label="Phone" name="phone" placeholder="phone" />
+          <NumInputField label="Phone" name="phone" placeholder="phone" />
 
           <PasswordField
             label="Password"

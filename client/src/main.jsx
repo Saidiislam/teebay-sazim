@@ -16,6 +16,9 @@ import "./index.css";
 const theme = extendTheme({
   styles: {
     global: {
+      body: {
+        bg: "gray.50",
+      },
       a: {
         textDecoration: "none",
         _hover: {
@@ -31,7 +34,7 @@ const theme = extendTheme({
 });
 
 const client = new ApolloClient({
-  uri: "http://localhost:3004/graphql",
+  uri: "http://localhost:3006/graphql",
   cache: new InMemoryCache(),
 });
 
