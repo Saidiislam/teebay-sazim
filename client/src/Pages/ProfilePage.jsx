@@ -63,11 +63,11 @@ export const ProfilePage = () => {
         <TopBar />
         {/*Profile Card to fetch and show data, static for now*/}
         <ProfileCard
-          firstName={"firstName"}
-          lastName={"lastName"}
-          address={"address"}
-          email={"email"}
-          phone={12345}
+          firstName={"Walter"}
+          lastName={"Hartwell White"}
+          address={"308 Negra Arroyo Lane, Albuquerque, New Mexico. 87104"}
+          email={"fullmethal@lchemist.com"}
+          phone={18002255324}
         />
 
         {/*Creating Tabs Section*/}

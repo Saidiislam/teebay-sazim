@@ -3,7 +3,9 @@ import React from "react";
 import { CustomModal } from "./CustomModal.jsx";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../../Api/Public.jsx";
+
 export const ProfileCard = ({ firstName, lastName, email, address, phone }) => {
+
   const [updateUser, { loading, error }] = useMutation(UPDATE_USER);
 
   const handleSubmit = async (event) => {

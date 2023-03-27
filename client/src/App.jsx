@@ -11,10 +11,6 @@ export const App = () => {
       <Grid minH={"100vh"} bg={"gray.50"}>
         <Container maxW={"container.sm"}>
           <VStack>
-            <Heading as={"h1"} size={"xl"}>
-              Nadim, Good luck!
-            </Heading>
-            {/*<CreateProductForm />*/}
             <Router />
           </VStack>
         </Container>

@@ -86,7 +86,7 @@ export function ParentForm() {
   return (
     <>
       <Button size={"sm"} mr={"4"} colorScheme={"teal"} onClick={handleOpen}>
-        Open Modal
+        Create New Product!
       </Button>
       <Modal isOpen={isOpen} onClose={handleClose} size="lg" isCentered>
         <ModalOverlay />

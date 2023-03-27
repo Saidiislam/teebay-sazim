@@ -7,7 +7,7 @@ import { Badge, Box } from "@chakra-ui/react";
 import { ErrorPage } from "./Misc/ErrorPage.jsx";
 import { LoadingSkele } from "./Misc/LoadingSkele.jsx";
 import { SingleProduct } from "../Components/Cards/SingleProduct.jsx";
-
+  
 export function SingleProdPage() {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_SINGLE_PRODUCT, {
