@@ -80,7 +80,7 @@ export class CreateUserInput {
     phone?: Nullable<number>;
     email: string;
     password: string;
-    role: Role;
+    role?: Nullable<Role>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -152,7 +152,7 @@ export class User {
     phone?: Nullable<number>;
     email: string;
     password: string;
-    role: Role;
+    role?: Nullable<Role>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
     products?: Nullable<Product[]>;

@@ -52,7 +52,7 @@ export function CustomModal({
         validationSchema={SignUpVal}
       >
         {({formikProps}) => (
-          <Form minH={"50vh"}>
+          <Form minh={"50vh"}>
             <Modal
               initialFocusRef={initialRef}
               isOpen={isOpen}

@@ -62,6 +62,36 @@ export const REMOVE_PRODUCT = gql`
   }
 `;
 
+export const CREATE_USER = gql`
+    mutation CreateUser($createUserInput: CreateUserInput!) {
+        createUser(createUserInput: $createUserInput) {
+            firstName
+            lastName
+            address
+            phone
+            email
+            password
+            role
+            createdAt
+            updatedAt
+            products {
+                id
+                status
+                userId
+                price
+                rentPrice
+                rentFrom
+                rentTo
+                title
+                description
+                createdAt
+                updatedAt
+                categories
+            }
+        }
+    }
+`
+
 export const GET_SINGLE_USER = gql`
     query User($userId: Int!) {
         user(id: $userId) {
@@ -89,6 +119,10 @@ export const UPDATE_USER = gql`
     }`
 
 
-
-
-
+export const LOGIN_USER = gql`
+    mutation LoginUser($loginUserInput: LoginUserInput!) {
+        loginUser(loginUserInput: $loginUserInput) {
+            access_token
+        }
+    }
+    `

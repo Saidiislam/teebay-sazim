@@ -13,19 +13,18 @@ export const CustomForm = ({
   alternate,
   switchTo,
   children,
+  initialValues,
+  validationSchema,
 }) => {
+  // const handleSubmit = async (values) => {
+  //   console.log('wda',values);
+  // };
+
   return (
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        address: "",
-        email: "",
-        phone: "",
-        password: "",
-      }}
+      initialValues={initialValues}
+      validationSchema={validationSchema}
       onSubmit={submit}
-      validationSchema={SignUpVal}
     >
       {(formikProps) => (
         <Form>

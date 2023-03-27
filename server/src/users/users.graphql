@@ -15,7 +15,7 @@ type User {
   phone: Int
   email: String!
   password: String!
-  role: Role!
+  role: Role
   createdAt: DateTime
   updatedAt: DateTime
   products: [Product!]
@@ -28,7 +28,7 @@ input CreateUserInput {
   phone: Int
   email: String!
   password: String!
-  role: Role!
+  role: Role
   createdAt: DateTime
   updatedAt: DateTime
 }

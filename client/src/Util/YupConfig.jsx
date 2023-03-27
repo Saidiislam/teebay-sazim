@@ -11,3 +11,11 @@ export const SignUpVal = yup.object().shape({
   phone: yup.string().nullable(),
   password: yup.string().required("Please enter a strong password"),
 });
+
+export const SignInVal = yup.object().shape({
+  email: yup
+    .string()
+    .email("Please enter a valid email")
+    .required("Please enter an email"),
+  password: yup.string().required("Please enter a strong password"),
+});

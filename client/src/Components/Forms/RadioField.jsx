@@ -6,6 +6,7 @@ import React, { useState } from "react";
 
 export function RadioField({ customOnChange }) {
   const [filterField, setfilterField] = useState(undefined);
+
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
       orderBy: {
@@ -20,6 +21,7 @@ export function RadioField({ customOnChange }) {
     pollInterval: 500,
   });
   console.log(data);
+
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "categories",
     defaultValue: "react",
@@ -33,8 +35,6 @@ export function RadioField({ customOnChange }) {
       {error ? (
         <ErrorPage message={error.message} />
       ) : loading ? (
-        <LoadingSkele />
-      ) : data.products.length === 0 ? (
         <ErrorPage />
       ) : (
         data.products.categories.map((value) => {

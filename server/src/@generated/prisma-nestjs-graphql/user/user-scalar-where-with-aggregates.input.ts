@@ -4,7 +4,7 @@ import { IntWithAggregatesFilter } from '../prisma/int-with-aggregates-filter.in
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
 import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
 import { IntNullableWithAggregatesFilter } from '../prisma/int-nullable-with-aggregates-filter.input';
-import { EnumRoleWithAggregatesFilter } from '../prisma/enum-role-with-aggregates-filter.input';
+import { EnumRoleNullableWithAggregatesFilter } from '../prisma/enum-role-nullable-with-aggregates-filter.input';
 import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 
 @InputType()
@@ -40,8 +40,8 @@ export class UserScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     password?: StringWithAggregatesFilter;
 
-    @Field(() => EnumRoleWithAggregatesFilter, {nullable:true})
-    role?: EnumRoleWithAggregatesFilter;
+    @Field(() => EnumRoleNullableWithAggregatesFilter, {nullable:true})
+    role?: EnumRoleNullableWithAggregatesFilter;
 
     @Field(() => DateTimeWithAggregatesFilter, {nullable:true})
     createdAt?: DateTimeWithAggregatesFilter;

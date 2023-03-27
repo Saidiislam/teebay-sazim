@@ -38,9 +38,7 @@ export const ProfilePage = () => {
 
   const ProductData = error ? (
     <ErrorPage message={error.message} />
-  ) : loading ? (
-    <LoadingSkele />
-  ) : data.products.length === 0 ? (
+  ) : loading || data.products.length === 0 ? (
     <ErrorPage />
   ) : (
     data.products.map((item) => (

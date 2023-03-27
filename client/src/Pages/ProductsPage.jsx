@@ -5,7 +5,6 @@ import { Box, Button, HStack, IconButton, Radio, Wrap } from "@chakra-ui/react";
 import { TopBar } from "./Misc/TopBar.jsx";
 import { PageHeadWSort } from "../Components/PageHeadWSort.jsx";
 import { ErrorPage } from "./Misc/ErrorPage.jsx";
-import { LoadingSkele } from "./Misc/LoadingSkele.jsx";
 import { ProductCard } from "../Components/Cards/ProductCard.jsx";
 
 export const ProductsPage = () => {
@@ -130,9 +129,7 @@ export const ProductsPage = () => {
         {/* Going through differnt stages to map the product data */}
         {error ? (
           <ErrorPage message={error.message} />
-        ) : loading ? (
-          <LoadingSkele />
-        ) : data.products.length === 0 ? (
+        ) : loading || data.products.length === 0 ? (
           <ErrorPage />
         ) : (
           data.products.map((item) => (
