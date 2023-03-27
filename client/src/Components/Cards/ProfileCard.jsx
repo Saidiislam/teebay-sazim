@@ -1,7 +1,26 @@
 import { Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { CustomModal } from "./CustomModal.jsx";
+import { useMutation } from "@apollo/client";
+import { UPDATE_USER } from "../../Api/Public.jsx";
 export const ProfileCard = ({ firstName, lastName, email, address, phone }) => {
+  const [updateUser, { loading, error }] = useMutation(UPDATE_USER);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const updatedUser = await updateUser(1, {
+        firstName,
+        lastName,
+        address,
+        phone,
+      });
+      console.log("Updated user:", updatedUser);
+    } catch (e) {
+      console.error("Error updating user:", e);
+    }
+  };
+
   return (
     <Box
       borderWidth="1px"
@@ -28,7 +47,15 @@ export const ProfileCard = ({ firstName, lastName, email, address, phone }) => {
           {firstName} {lastName}
         </Heading>
         <Spacer />
-        <CustomModal />
+        {/*passing the variables to the modal*/}
+        <CustomModal
+          firstName={firstName}
+          lastName={lastName}
+          address={address}
+          phone={phone}
+          modalHeader={"Edit User Details"}
+          submitHandler={() => handleSubmit}
+        />
       </Flex>
 
       <Text fontSize="lg" fontWeight="semibold" my="2">

@@ -1,13 +1,12 @@
-import React, {useState} from "react";
-import {useQuery} from "@apollo/client";
-import {GET_PRODUCTS} from "../Api/Public.jsx";
-import {Box, Button, HStack, IconButton, Radio, Wrap} from "@chakra-ui/react";
-import {TopBar} from "./Misc/TopBar.jsx";
-import {PageHeadWSort} from "../Components/PageHeadWSort.jsx";
-import {ErrorPage} from "./Misc/ErrorPage.jsx";
-import {LoadingSkele} from "./Misc/LoadingSkele.jsx";
-import {ProductCard} from "../Components/Cards/ProductCard.jsx";
-
+import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_PRODUCTS } from "../Api/Public.jsx";
+import { Box, Button, HStack, IconButton, Radio, Wrap } from "@chakra-ui/react";
+import { TopBar } from "./Misc/TopBar.jsx";
+import { PageHeadWSort } from "../Components/PageHeadWSort.jsx";
+import { ErrorPage } from "./Misc/ErrorPage.jsx";
+import { LoadingSkele } from "./Misc/LoadingSkele.jsx";
+import { ProductCard } from "../Components/Cards/ProductCard.jsx";
 
 export const ProductsPage = () => {
   const [field, setOrderByField] = useState("price");
@@ -129,7 +128,7 @@ export const ProductsPage = () => {
         </HStack>
 
         {/* Going through differnt stages to map the product data */}
-     {error ? (
+        {error ? (
           <ErrorPage message={error.message} />
         ) : loading ? (
           <LoadingSkele />

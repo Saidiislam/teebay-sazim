@@ -19,7 +19,7 @@ export function TopBar() {
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">
       <Box py="8">
-        <Heading as={ReactLink} to="/" size="md">
+        <Heading as={ReactLink} to="/" size="md" color={"teal"}>
           Teebay
         </Heading>
       </Box>

@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { ProfileCard } from "../Components/Cards/ProfileCard.jsx";
 import {
   Box,
+  Flex,
+  IconButton,
   Tab,
   TabList,
   TabPanel,
@@ -10,15 +12,21 @@ import {
 } from "@chakra-ui/react";
 import { TopBar } from "./Misc/TopBar.jsx";
 import { useQuery } from "@apollo/client";
-import { GET_PRODUCTS } from "../Api/Public.jsx";
-import {ErrorPage} from "./Misc/ErrorPage.jsx";
-import {LoadingSkele} from "./Misc/LoadingSkele.jsx";
-import {ProductCard} from "../Components/Cards/ProductCard.jsx";
-import {NonNavProductCard} from "../Components/Cards/NonNavProductCard.jsx";
+import {
+  GET_PRODUCTS,
+  GET_SINGLE_PRODUCT,
+  GET_SINGLE_USER,
+} from "../Api/Public.jsx";
+import { ErrorPage } from "./Misc/ErrorPage.jsx";
+import { LoadingSkele } from "./Misc/LoadingSkele.jsx";
+import { ProductCard } from "../Components/Cards/ProductCard.jsx";
+import { NonNavProductCard } from "../Components/Cards/NonNavProductCard.jsx";
+import { FaBible } from "react-icons/all.js";
+import { CustomModal } from "../Components/Cards/CustomModal.jsx";
 
 export const ProfilePage = () => {
-    const [value, setValue] = useState("UNSOLD");
-    const { loading, error, data } = useQuery(GET_PRODUCTS, {
+  const [value, setValue] = useState("UNSOLD");
+  const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
       filter: {
         filterBy: "status",
@@ -27,26 +35,27 @@ export const ProfilePage = () => {
     },
     pollInterval: 500,
   });
-    const ProductData = error ? (
-          <ErrorPage message={error.message} />
-      ) : loading ? (
-          <LoadingSkele />
-      ) : data.products.length === 0 ? (
-          <ErrorPage />
-      ) : (
-          data.products.map((item) => (
-              <NonNavProductCard
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  price={item.price}
-                  category={item.categories}
-                  createdAt={item.updatedAt}
-                  switchTo={`/product/${item.id}`}
-              />
-          ))
-      )
+
+  const ProductData = error ? (
+    <ErrorPage message={error.message} />
+  ) : loading ? (
+    <LoadingSkele />
+  ) : data.products.length === 0 ? (
+    <ErrorPage />
+  ) : (
+    data.products.map((item) => (
+      <NonNavProductCard
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        description={item.description}
+        price={item.price}
+        category={item.categories}
+        createdAt={item.updatedAt}
+        switchTo={`/product/${item.id}`}
+      />
+    ))
+  );
   return (
     <>
       <Box w={"100%"}>
@@ -54,12 +63,13 @@ export const ProfilePage = () => {
         <TopBar />
         {/*Profile Card to fetch and show data, static for now*/}
         <ProfileCard
-          firstName={"Walter"}
-          lastName={"Hartwell White"}
-          address={"308 Negra Arroyo Lane, Albuquerque, New Mexico. 87104"}
-          email={"chemistryislove@white.com"}
-          phone={505117898}
+          firstName={"firstName"}
+          lastName={"lastName"}
+          address={"address"}
+          email={"email"}
+          phone={12345}
         />
+
         {/*Creating Tabs Section*/}
         <Tabs marginTop={4} isFitted variant="enclosed">
           {/*5 tabs, that reduces the need of making an extra component to see own my stuff*/}
@@ -72,22 +82,11 @@ export const ProfilePage = () => {
           </TabList>
           {/*Passing the query inside the TabPanels*/}
           <TabPanels>
-            <TabPanel>
-
-              {ProductData}
-            </TabPanel>
-            <TabPanel>
-              {ProductData}
-            </TabPanel>
-            <TabPanel>
-              {ProductData}
-            </TabPanel>
-            <TabPanel>
-              {ProductData}
-            </TabPanel>
-            <TabPanel>
-              {ProductData}
-            </TabPanel>
+            <TabPanel>{ProductData}</TabPanel>
+            <TabPanel>{ProductData}</TabPanel>
+            <TabPanel>{ProductData}</TabPanel>
+            <TabPanel>{ProductData}</TabPanel>
+            <TabPanel>{ProductData}</TabPanel>
           </TabPanels>
         </Tabs>
       </Box>

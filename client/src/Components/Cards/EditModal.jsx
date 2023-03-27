@@ -16,18 +16,20 @@ import { SignUpVal } from "../../Util/YupConfig.jsx";
 import { InputField } from "../Forms/InputField.jsx";
 import { NumInputField } from "../Forms/NumInputField.jsx";
 import { FaPenSquare } from "react-icons/all.js";
-import {FaPencilAlt} from "react-icons/fa";
 
-// Defining Props for the modal for us to use
-export function CustomModal({
-  modalHeader, disabledProp,
-                                submitHandler,
-                                firstName,
-  lastName,
-  address,
-  phone,
+export function EditModal({
+  modalHeader,
+  submit,
+                              formikProps,
+  id,
+  status,
+  userId,
+  price,
+  rentPrice,
+  title,
+  description,
+  categories,
 }) {
-  //   button Toggle
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
@@ -39,20 +41,23 @@ export function CustomModal({
         variant={"outline"}
         aria-label={"Edit Profile"}
       >
-        {<FaPencilAlt />}
+        {<FaPenSquare />}
       </IconButton>
       <Formik
         initialValues={{
-          firstName: firstName,
-          lastName: lastName,
-          address: address,
-          phone: phone,
+          status: status,
+          userId: userId,
+          price: price,
+          rentPrice: rentPrice,
+          title: title,
+          description: description,
+          categories: categories,
         }}
-        onSubmit={submitHandler}
+        onSubmit={submit}
         validationSchema={SignUpVal}
       >
-        {({formikProps}) => (
-          <Form minH={"50vh"}>
+        {(formikProps) => (
+          <Form>
             <Modal
               initialFocusRef={initialRef}
               isOpen={isOpen}
@@ -61,37 +66,34 @@ export function CustomModal({
             >
               <ModalOverlay />
               <ModalContent>
+
                 <ModalHeader>{modalHeader}</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody pb={6}>
+                <ModalBody pb={2} gap={10}>
                   <InputField
-                    label="First Name"
-                    name="firstName"
-                    placeholder="First Name"
-                  />
-                  <InputField
-                    label="Last Name"
-                    name="lastName"
-                    placeholder="Last Name"
-                  />
-                  <InputField
-                    label="Address"
-                    name="address"
-                    placeholder="Address"
+                    label="Title"
+                    name="title"
+                    placeholder="Product Name"
                   />
                   <NumInputField
-                    label="Phone"
-                    name="phone"
-                    placeholder="phone"
+                    label="Rent Cost"
+                    name="rentPrice"
+                    placeholder="Per Hour"
+                  />
+                  <NumInputField
+                    label="Price"
+                    name="price"
+                    placeholder="Your Price"
                   />
                 </ModalBody>
 
                 <ModalFooter>
-                  <Button colorScheme="teal" mr={3} type="submit" disabled={disabledProp}>
+                  <Button colorScheme="teal" mr={3} type="submit">
                     Save
                   </Button>
                   <Button onClick={onClose}>Cancel</Button>
                 </ModalFooter>
+
               </ModalContent>
             </Modal>
           </Form>

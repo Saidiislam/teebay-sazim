@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_PRODUCT } from "../../Api/Public.jsx";
+import { EditModal } from "./EditModal.jsx";
 
 // using memo to avoid unnecessary re-renders
 export const NonNavProductCard = React.memo(
@@ -28,12 +29,13 @@ export const NonNavProductCard = React.memo(
     createdAt,
     switchTo,
     href,
-    stateValue,
+    stateValue, rentPrice,
+      categories,
     ...rest
   }) => {
     const [removeProduct, { loading, error }] = useMutation(REMOVE_PRODUCT);
 
-    // Funtion to invoke deleting process
+    // Function to invoke deleting process
     const handleRemoveClick = async () => {
       try {
         const { data } = await removeProduct({
@@ -74,12 +76,16 @@ export const NonNavProductCard = React.memo(
             </Heading>
           </Box>
           <Spacer />
-          <ButtonGroup gap="2">
-            <IconButton
-              variant={"ghost"}
-              colorScheme={"teal"}
-              aria-label="Edit Post"
-              icon={<FaPencilAlt />}
+          <ButtonGroup gap="0">
+            {/* Button Groups*/}
+            <EditModal
+              title={title}
+              id={id}
+              userId={1}
+              rentPrice={rentPrice}
+              description={description}
+              price={price}
+              categories={[categories]}
             />
             <IconButton
               variant={"ghost"}

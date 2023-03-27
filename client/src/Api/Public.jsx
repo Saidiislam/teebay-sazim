@@ -41,7 +41,19 @@ export const GET_SINGLE_PRODUCT = gql`
     }
   }
 `;
-
+export const  CREATE_PRODUCT = gql`
+    mutation Mutation($createProductInput: CreateProductInput!) {
+        createProduct(createProductInput: $createProductInput) {
+            status
+            userId
+            price
+            rentPrice
+            title
+            description
+            categories
+        }
+    }
+`
 export const REMOVE_PRODUCT = gql`
   mutation Mutation($removeProductId: Int!) {
     removeProduct(id: $removeProductId) {
@@ -49,3 +61,34 @@ export const REMOVE_PRODUCT = gql`
     }
   }
 `;
+
+export const GET_SINGLE_USER = gql`
+    query User($userId: Int!) {
+        user(id: $userId) {
+            id
+            firstName
+            lastName
+            address
+            phone
+            email
+            password
+            role
+        }
+    }
+`
+
+export const UPDATE_USER = gql`
+    mutation UpdateUser($updateUserId: Int!, $updateUserInput: UpdateUserInput!) {
+        updateUser(id: $updateUserId, updateUserInput: $updateUserInput) {
+            firstName
+            id
+            lastName
+            address
+            phone
+        }
+    }`
+
+
+
+
+

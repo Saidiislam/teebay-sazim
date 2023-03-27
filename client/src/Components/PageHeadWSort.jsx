@@ -9,6 +9,7 @@ import {
   RadioGroup,
   Radio,
 } from "@chakra-ui/react";
+import {ParentForm} from "./MSForm/ParentForm.jsx";
 
 export function PageHeadWSort({
   title,
@@ -22,7 +23,9 @@ export function PageHeadWSort({
         {title}
       </Heading>
       <Spacer />
+        <ParentForm />
       <RadioGroup onChange={customOnChange} value={customValue}>
+
         <Stack direction="row">{children}</Stack>
       </RadioGroup>
     </Flex>
