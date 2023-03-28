@@ -5,6 +5,7 @@ It's a website made with NestJS, GraphQL, Prisma on the backend, PostGreSQL as D
 I've had so much personal growth through this project, it basically whirled me out of my comfortzone to make me adapt with some new. Anyways more on that later. 
 I'll begin by going through all of the processes from scratch, so you get more insight on what's really happening behind the curtain, r/ELI5
 
+#[Here's the video showing how to run and what to expect](https://streamable.com/vky5g7)
 
 <h3>💻 Installation</h3>
 
