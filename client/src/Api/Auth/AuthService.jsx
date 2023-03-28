@@ -6,7 +6,11 @@ export const setToken = (token) => {
 };
 
 export const getToken = () => {
-  return JSON.parse(Cookies.get(TOKEN_KEY));
+  const token = Cookies.get(TOKEN_KEY)
+  if (token === undefined){
+    return false
+  }
+  return JSON.parse(token);
 };
 
 export const removeToken = () => {
