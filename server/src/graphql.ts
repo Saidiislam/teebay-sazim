@@ -139,7 +139,7 @@ export abstract class IMutation {
 
     abstract updateUser(id: number, updateUserInput: UpdateUserInput): User | Promise<User>;
 
-    abstract loginUser(loginUserInput: LoginUserInput): LoggedUserOutput | Promise<LoggedUserOutput>;
+    abstract loginUser(loginUserInput: LoginUserInput): User | Promise<User>;
 
     abstract removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
@@ -159,7 +159,7 @@ export class User {
 }
 
 export class LoggedUserOutput {
-    access_token: string;
+    access_token: User;
 }
 
 export type DateTime = any;

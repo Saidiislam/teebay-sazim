@@ -1,13 +1,12 @@
 import Cookies from "js-cookie";
-
-const TOKEN_KEY = "access_token";
+const TOKEN_KEY = "TOKEN";
 
 export const setToken = (token) => {
-  Cookies.set(TOKEN_KEY, token, { expires: 1 });
+  Cookies.set(TOKEN_KEY, JSON.stringify(token), { expires: 1 });
 };
 
 export const getToken = () => {
-  return Cookies.get(TOKEN_KEY);
+  return JSON.parse(Cookies.get(TOKEN_KEY));
 };
 
 export const removeToken = () => {

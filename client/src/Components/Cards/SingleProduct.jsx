@@ -9,14 +9,25 @@ import {
   Badge,
 } from "@chakra-ui/react";
 import React from "react";
+import { useUpdateProduct } from "../../Api/UseUpdateProduct";
+import { Link } from "react-router-dom";
 
 export function SingleProduct({
+  id,
   categories,
   title,
   description,
   price,
   rentPrice,
 }) {
+
+  // <=== To DO: Implement Update Function ===>
+  const [updateProduct, { loading, error }] = useUpdateProduct();
+
+  const updateOnClick = async () => {
+    const updatedProduct = await updateProduct({ id });
+  };
+
   return (
     <>
       <Box gap={2} boxShadow="base" p="2" rounded="md" bg="white">
@@ -46,7 +57,14 @@ export function SingleProduct({
           </Flex>
           <ButtonGroup variant="outline" spacing={4} alignSelf="flex-end">
             <Button>Rent it</Button>
-            <Button colorScheme="green">Buy Now</Button>
+            <Button
+              colorScheme="green"
+              as={Link}
+              onClick={updateOnClick}
+              to={"/"}
+            >
+              Buy Now
+            </Button>
           </ButtonGroup>
         </Flex>
       </Box>

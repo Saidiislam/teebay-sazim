@@ -1,23 +1,29 @@
-import { Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
-import React from "react";
-import { CustomModal } from "./CustomModal.jsx";
+import { Box, Flex, Heading, Spacer, Text, useQuery } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { UPDATE_USER } from "../../Api/Public.jsx";
+import { useState } from "react";
+import { getToken } from "../../Api/Auth/AuthService.jsx";
 
-export const ProfileCard = ({ firstName, lastName, email, address, phone }) => {
-
+export const ProfileCard = ({ id, firstName, lastName, address, phone }) => {
   const [updateUser, { loading, error }] = useMutation(UPDATE_USER);
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const token = getToken();
+    setUser(token);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const updatedUser = await updateUser(1, {
+      const updatedUser = await updateUser(user.id, {
         firstName,
         lastName,
         address,
         phone,
       });
-      console.log("Updated user:", updatedUser);
     } catch (e) {
       console.error("Error updating user:", e);
     }
@@ -46,28 +52,20 @@ export const ProfileCard = ({ firstName, lastName, email, address, phone }) => {
     >
       <Flex justifyContent={"space-between"}>
         <Heading as="h2" size="xl" fontWeight="bold" mb="2">
-          {firstName} {lastName}
+          {user.firstName} {user.lastName}
         </Heading>
         <Spacer />
         {/*passing the variables to the modal*/}
-        <CustomModal
-          firstName={firstName}
-          lastName={lastName}
-          address={address}
-          phone={phone}
-          modalHeader={"Edit User Details"}
-          submitHandler={() => handleSubmit}
-        />
       </Flex>
 
       <Text fontSize="lg" fontWeight="semibold" my="2">
-        {email}
+        {user.email}
       </Text>
       <Text fontSize="md" fontWeight="medium" my="2">
-        {address}
+        {user.address}
       </Text>
       <Text fontSize="sm" fontWeight="bold" my="2">
-        {phone}
+        {user.phone}
       </Text>
     </Box>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCreateProduct } from "../../Util/UseCreateProduct.jsx";
+import { useCreateProduct } from "../../Api/UseCreateProduct.jsx";
 import React from "react";
 export function CreateProductForm() {
   const [createProduct, { loading, error }] = useCreateProduct();
@@ -23,7 +23,6 @@ export function CreateProductForm() {
         userId,
         categories,
       });
-      console.log("Created product:", createdProduct);
     } catch (e) {
       console.error("Error creating product:", e);
     }

@@ -20,7 +20,7 @@ import { FaPenSquare } from "react-icons/all.js";
 export function EditModal({
   modalHeader,
   submit,
-                              formikProps,
+  formikProps,
   id,
   status,
   userId,
@@ -66,7 +66,6 @@ export function EditModal({
             >
               <ModalOverlay />
               <ModalContent>
-
                 <ModalHeader>{modalHeader}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody pb={2} gap={10}>
@@ -93,7 +92,6 @@ export function EditModal({
                   </Button>
                   <Button onClick={onClose}>Cancel</Button>
                 </ModalFooter>
-
               </ModalContent>
             </Modal>
           </Form>

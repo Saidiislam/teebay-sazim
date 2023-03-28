@@ -1,27 +1,27 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Button,
   Center,
-  Modal, ModalBody,
+  Modal,
+  ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
   SlideFade,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { CustomForm } from "../../Components/Forms/CustomForm.jsx";
 import { InputField } from "../../Components/Forms/InputField.jsx";
 import { NumInputField } from "../../Components/Forms/NumInputField.jsx";
 import { PasswordField } from "../../Components/Forms/PasswordField.jsx";
 import { SignUpVal } from "../../Util/YupConfig.jsx";
-import { useCreateUser } from "../../Util/UseCreateUser.jsx";
-import {Link} from "react-router-dom";
+import { useCreateUser } from "../../Api/UseCreateUser.jsx";
+import { Link } from "react-router-dom";
 
 export const SignUp = () => {
-  
   const [createUser, { loading, error }] = useCreateUser();
-  const [isCreated, setIsCreated] = useState(false)
+  const [isCreated, setIsCreated] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSubmit = async (values) => {
@@ -35,9 +35,8 @@ export const SignUp = () => {
         password: values.password,
       });
 
-      setIsCreated(true)
+      setIsCreated(true);
       onOpen();
-      console.log("Created User:", createdUser);
     } catch (e) {
       console.error("Error Creating User:", e);
     }
@@ -95,17 +94,24 @@ export const SignUp = () => {
             <ModalCloseButton />
             <ModalBody>
               <Center fontSize="l" textAlign={"center"}>
-                Your account has been created successfully. Please Login Again to get access! 🥳
+                Your account has been created successfully. Please Login Again
+                to get access! 🥳
               </Center>
               <Center pt="4">
-                <Button as={Link} onClick={onClose} colorScheme="teal" rounded={"full"} size={"sm"} to={"/login"}>
+                <Button
+                  as={Link}
+                  onClick={onClose}
+                  colorScheme="teal"
+                  rounded={"full"}
+                  size={"sm"}
+                  to={"/login"}
+                >
                   Go to Login
                 </Button>
               </Center>
             </ModalBody>
           </ModalContent>
         </Modal>
-
       </SlideFade>
     </Center>
   );

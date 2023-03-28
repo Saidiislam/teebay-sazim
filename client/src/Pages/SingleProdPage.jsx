@@ -28,6 +28,7 @@ export function SingleProdPage() {
         ) : (
           <>
             <SingleProduct
+              id={data.product.id}
               price={data.product.price}
               rentPrice={data.product.rentPrice}
               description={data.product.description}

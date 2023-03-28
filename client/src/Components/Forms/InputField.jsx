@@ -12,6 +12,7 @@ export const InputField = ({ label, placeholder, ...props }) => {
   const hasError = Boolean(meta.touched && meta.error);
 
   return (
+    // Fields with type validation
     <FormControl isInvalid={hasError}>
       <FormLabel
         htmlFor={field.name}

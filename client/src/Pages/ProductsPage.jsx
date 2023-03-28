@@ -25,7 +25,6 @@ export const ProductsPage = () => {
     },
     pollInterval: 500,
   });
-  console.log(data);
   return (
     <>
       <Box w={"100%"}>

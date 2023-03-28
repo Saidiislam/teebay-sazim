@@ -12,17 +12,18 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { SignUpVal } from "../../Util/YupConfig.jsx";
+import { SignUpVal, UpdateUserVal } from "../../Util/YupConfig.jsx";
 import { InputField } from "../Forms/InputField.jsx";
 import { NumInputField } from "../Forms/NumInputField.jsx";
 import { FaPenSquare } from "react-icons/all.js";
-import {FaPencilAlt} from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 
 // Defining Props for the modal for us to use
 export function CustomModal({
-  modalHeader, disabledProp,
-                                submitHandler,
-                                firstName,
+  modalHeader,
+  disabledProp,
+  submitHandler,
+  firstName,
   lastName,
   address,
   phone,
@@ -49,9 +50,9 @@ export function CustomModal({
           phone: phone,
         }}
         onSubmit={submitHandler}
-        validationSchema={SignUpVal}
+        validationSchema={UpdateUserVal}
       >
-        {({formikProps}) => (
+        {({ formikProps }) => (
           <Form minh={"50vh"}>
             <Modal
               initialFocusRef={initialRef}
@@ -87,7 +88,12 @@ export function CustomModal({
                 </ModalBody>
 
                 <ModalFooter>
-                  <Button colorScheme="teal" mr={3} type="submit" disabled={disabledProp}>
+                  <Button
+                    colorScheme="teal"
+                    mr={3}
+                    type="submit"
+                    disabled={disabledProp}
+                  >
                     Save
                   </Button>
                   <Button onClick={onClose}>Cancel</Button>

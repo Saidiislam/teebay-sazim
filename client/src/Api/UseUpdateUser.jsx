@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { UPDATE_USER } from "../Api/Public.jsx";
+import { UPDATE_USER } from "./Public.jsx";
 
 export function useUpdateUser() {
   const [updateUserMutation, { loading, error }] = useMutation(UPDATE_USER);

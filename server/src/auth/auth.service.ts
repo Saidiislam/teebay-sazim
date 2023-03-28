@@ -49,7 +49,7 @@ export class AuthService {
 
     // String matching instead of JWT sign
     return {
-      access_token: 'Bearer token',
+      payload,
     };
   }
 }

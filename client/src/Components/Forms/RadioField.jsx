@@ -7,6 +7,7 @@ import React, { useState } from "react";
 export function RadioField({ customOnChange }) {
   const [filterField, setfilterField] = useState(undefined);
 
+  // fetching category list
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
       orderBy: {
@@ -20,7 +21,6 @@ export function RadioField({ customOnChange }) {
     },
     pollInterval: 500,
   });
-  console.log(data);
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "categories",

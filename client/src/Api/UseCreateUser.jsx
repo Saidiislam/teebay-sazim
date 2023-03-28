@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { CREATE_USER } from "../Api/Public.jsx";
+import { CREATE_USER } from "./Public.jsx";
 import React from "react";
 
 export function useCreateUser() {

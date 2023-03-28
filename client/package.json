@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.10.6",
     "@fontsource/montserrat": "^4.5.14",
     "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
     "formik": "^2.2.9",
     "framer-motion": "^10.9.1",
     "graphql": "^16.6.0",

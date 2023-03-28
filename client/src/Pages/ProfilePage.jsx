@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 import { ProfileCard } from "../Components/Cards/ProfileCard.jsx";
-import {
-  Box,
-  Flex,
-  IconButton,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from "@chakra-ui/react";
+import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { TopBar } from "./Misc/TopBar.jsx";
 import { useQuery } from "@apollo/client";
-import {
-  GET_PRODUCTS,
-  GET_SINGLE_PRODUCT,
-  GET_SINGLE_USER,
-} from "../Api/Public.jsx";
+import { GET_PRODUCTS } from "../Api/Public.jsx";
 import { ErrorPage } from "./Misc/ErrorPage.jsx";
-import { LoadingSkele } from "./Misc/LoadingSkele.jsx";
-import { ProductCard } from "../Components/Cards/ProductCard.jsx";
 import { NonNavProductCard } from "../Components/Cards/NonNavProductCard.jsx";
-import { FaBible } from "react-icons/all.js";
-import { CustomModal } from "../Components/Cards/CustomModal.jsx";
 
 export const ProfilePage = () => {
+  // Fetching inventory cards on their states
   const [value, setValue] = useState("UNSOLD");
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -36,6 +20,7 @@ export const ProfilePage = () => {
     pollInterval: 500,
   });
 
+  // Mapping them
   const ProductData = error ? (
     <ErrorPage message={error.message} />
   ) : loading || data.products.length === 0 ? (
@@ -50,6 +35,7 @@ export const ProfilePage = () => {
         price={item.price}
         category={item.categories}
         createdAt={item.updatedAt}
+        userid={item.userId}
         switchTo={`/product/${item.id}`}
       />
     ))
@@ -60,13 +46,7 @@ export const ProfilePage = () => {
         {/*Navigation Bar*/}
         <TopBar />
         {/*Profile Card to fetch and show data, static for now*/}
-        <ProfileCard
-          firstName={"Walter"}
-          lastName={"Hartwell White"}
-          address={"308 Negra Arroyo Lane, Albuquerque, New Mexico. 87104"}
-          email={"fullmethal@lchemist.com"}
-          phone={18002255324}
-        />
+        <ProfileCard />
 
         {/*Creating Tabs Section*/}
         <Tabs marginTop={4} isFitted variant="enclosed">

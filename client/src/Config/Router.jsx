@@ -12,11 +12,10 @@ import { SignUp } from "../Pages/Pub/SignUp.jsx";
 import { ProductsPage } from "../Pages/ProductsPage.jsx";
 import { ProfilePage } from "../Pages/ProfilePage.jsx";
 import { SingleProdPage } from "../Pages/SingleProdPage.jsx";
-import { isAuthenticated } from "./Auth/AuthService.jsx";
+import { isAuthenticated } from "../Api/Auth/AuthService.jsx";
 
 export function Router() {
-  const [access, setAccess] = useState();
-  console.log("ACCESS", access);
+  const [access, setAccess] = useState(true);
   useEffect(() => {
     isAuthenticated() ? setAccess(true) : setAccess(false);
   }, []);

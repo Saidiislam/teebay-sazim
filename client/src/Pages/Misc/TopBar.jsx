@@ -9,18 +9,18 @@ import {
   MenuDivider,
   MenuList,
   MenuItem,
-  IconButton, Button,
+  IconButton,
+  Button,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link as ReactLink } from "react-router-dom";
 import { FaAnkh } from "react-icons/fa";
-import {removeToken} from "../../Config/Auth/AuthService.jsx";
+import { removeToken } from "../../Api/Auth/AuthService.jsx";
 
 export function TopBar() {
   function handleLogout() {
-      removeToken()
+    removeToken();
     window.location.reload(false);
-
   }
   return (
     <Flex minWidth="max-content" alignItems="center" gap="2">

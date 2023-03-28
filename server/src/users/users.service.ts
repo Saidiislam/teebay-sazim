@@ -67,8 +67,9 @@ export class UsersService {
       throw new BadRequestException(`Email or password are invalid`);
     }
     const generateCreds = await this.authService.generateUserCredentials(user);
+    console.log('USER', user);
 
-    return generateCreds;
+    return user;
   }
   /**
    * Registers new user to the DB

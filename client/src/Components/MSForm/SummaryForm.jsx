@@ -15,7 +15,6 @@ export function SummaryForm({ values, onReset, onSubmit }) {
           Title:{" "}
         </Text>
         <Text ml="2" color="gray.500">
-          {" "}
           {values.title}
         </Text>
       </Flex>

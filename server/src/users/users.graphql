@@ -39,7 +39,7 @@ input LoginUserInput {
 }
 
 type LoggedUserOutput {
-  access_token: String!
+  access_token: User!
 }
 
 input UpdateUserInput {
@@ -67,6 +67,6 @@ type Query {
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
-  loginUser(loginUserInput: LoginUserInput!): LoggedUserOutput!
+  loginUser(loginUserInput: LoginUserInput!): User!
   removeUser(id: Int!): User
 }

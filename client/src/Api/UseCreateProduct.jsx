@@ -1,11 +1,12 @@
 import { useMutation } from "@apollo/client";
-import { CREATE_PRODUCT } from "../Api/Public.jsx";
-import React from "react";
+import { CREATE_PRODUCT } from "./Public.jsx";
 
 export function useCreateProduct() {
+  // Importing mutation
   const [createProductMutation, { loading, error }] =
     useMutation(CREATE_PRODUCT);
 
+    // Invoking another function to avoid boilerplating
   async function createProduct(createProductInput) {
     try {
       const { data } = await createProductMutation({

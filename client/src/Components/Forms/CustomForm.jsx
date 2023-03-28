@@ -1,9 +1,6 @@
-import { VStack, Button, Heading, Link, Center } from "@chakra-ui/react";
+import { VStack, Button, Heading, Link } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import React from "react";
-import { InputField } from "./InputField";
-import { PasswordField } from "./PasswordField";
-import { SignUpVal } from "../../Util/YupConfig";
 import { Link as ReactLink } from "react-router-dom";
 
 export const CustomForm = ({
@@ -16,10 +13,6 @@ export const CustomForm = ({
   initialValues,
   validationSchema,
 }) => {
-  // const handleSubmit = async (values) => {
-  //   console.log('wda',values);
-  // };
-
   return (
     <Formik
       initialValues={initialValues}

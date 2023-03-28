@@ -22,11 +22,14 @@ import { DescriptionForm } from "./DescriptionForm.jsx";
 import { PriceForm } from "./PriceForm.jsx";
 import { TitleForm } from "./TitleForm.jsx";
 import { SummaryForm } from "./SummaryForm.jsx";
-import { useCreateProduct } from "../../Util/UseCreateProduct.jsx";
+import { useCreateProduct } from "../../Api/UseCreateProduct.jsx";
+import { useUpdateProduct } from "../../Api/UseUpdateProduct.jsx";
 
-export function ParentForm() {
+export function ParentForm({formName}) {
   const [createProduct, { loading, error }] = useCreateProduct();
+  const [updateProduct] = useUpdateProduct();
   const [isOpen, setIsOpen] = useState(false);
+  const [updater, setUpdater] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [formValues, setFormValues] = useState({
     title: "",
@@ -53,19 +56,20 @@ export function ParentForm() {
     event.preventDefault();
     try {
       const createdProduct = await createProduct({
-        title : formValues.title,
-        price : formValues.price,
-        description : formValues.description,
-        rentPrice : formValues.rentPrice,
-        status : formValues.status,
-        userId : formValues.userId,
-        categories : formValues.categories,
+        title: formValues.title,
+        price: formValues.price,
+        description: formValues.description,
+        rentPrice: formValues.rentPrice,
+        status: formValues.status,
+        userId: formValues.userId,
+        categories: formValues.categories,
       });
       console.log("Created product:", createdProduct);
     } catch (e) {
       console.error("Error creating product:", e);
     }
     console.log("Form submitted:", formValues);
+    setUpdater(false);
     handleClose();
   };
   const handleReset = () => {
@@ -86,7 +90,7 @@ export function ParentForm() {
   return (
     <>
       <Button size={"sm"} mr={"4"} colorScheme={"teal"} onClick={handleOpen}>
-        Create New Product!
+        {formName}
       </Button>
       <Modal isOpen={isOpen} onClose={handleClose} size="lg" isCentered>
         <ModalOverlay />
@@ -105,7 +109,11 @@ export function ParentForm() {
             )}
             {currentPage === 2 && (
               <SlideFade in={true} reverse={true}>
-                <CategoryForm onNext={handleNext} values={formValues} />
+                <CategoryForm
+                  onNext={handleNext}
+                  onPrevious={handlePrevious}
+                  values={formValues}
+                />
               </SlideFade>
             )}
             {currentPage === 3 && (

@@ -19,3 +19,10 @@ export const SignInVal = yup.object().shape({
     .required("Please enter an email"),
   password: yup.string().required("Please enter a strong password"),
 });
+
+export const UpdateUserVal = yup.object().shape({
+  firstName: yup.string().required("Please enter your first name"),
+  lastName: yup.string().required("Please enter your last name"),
+  address: yup.string().required("Please enter your current address"),
+  phone: yup.string().nullable(),
+});
